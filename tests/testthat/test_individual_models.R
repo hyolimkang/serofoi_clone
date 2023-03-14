@@ -1,5 +1,5 @@
 test_that("individual models", {
-  # So far we are skipping tests on these platforms until 
+  # So far we are skipping tests on these platforms until
   # we find an efficient way to update rstan testthat snapshots on all of them
   skip_on_os(c("windows", "mac"))
   skip_on_ci()
@@ -30,6 +30,13 @@ test_that("individual models", {
   model_2_object <- run_seroprev_model(
     seroprev_data = data_test,
     seroprev_model_name = "continuous_foi_normal_log",
+    n_iters = 1000
+  )
+  data_test <- prepare_seroprev_data(veev2012)
+
+  model_3_object <- run_seroprev_model(
+    seroprev_data = data_test,
+    seroprev_model_name = "continuous_foi_student_t_log_high",
     n_iters = 1000
   )
 
