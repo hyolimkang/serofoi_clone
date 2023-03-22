@@ -32,7 +32,7 @@ stan_model function, saved as an .RDS file and returned as the output of the fun
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/simulated_data.html">Simulated data</a>
-    <a class="dropdown-item" href="../articles/use_cases.html">serofoi</a>
+    <a class="dropdown-item" href="../articles/use_cases.html">Use cases</a>
   </div>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -87,7 +87,9 @@ In case the .RDS file exists, it is read and returned; otherwise, the object mod
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">save_or_load_model</span><span class="op">(</span>seroprev_model_name<span class="op">=</span><span class="st">"constant_foi_bi"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> S4 class stanmodel 'anon_model' coded as follows:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> No rds file found for model constant_foi_bi. Compiling stan model...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> S4 class stanmodel 'constant_foi_bi' coded as follows:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> data {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      int&lt;lower=0&gt; Nobs;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      int Npos[Nobs];</span>
@@ -96,29 +98,33 @@ In case the .RDS file exists, it is read and returned; otherwise, the object mod
 <span class="r-out co"><span class="r-pr">#&gt;</span>      int &lt;lower=1&gt;Ymax;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      matrix[Nobs, Ymax] AgeExpoMatrix;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> parameters {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    real&lt;lower=0,upper=2&gt; lambda0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> transformed parameters {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   real P[Nobs];</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   real ScalerDotProduct[Nobs];</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   row_vector[Ymax] foi;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  for (j in 1:Ymax) {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    foi[j] = lambda0;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  for (i in 1:Nobs){</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ScalerDotProduct[i] = dot_product(AgeExpoMatrix[i,], foi);</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    P[i] = 1 - exp(-ScalerDotProduct[i]);</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  }</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> model {</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   for (i in 1:Nobs)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Npos[i] ~ binomial(Ntotal[i], P[i]) ;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    lambda0 ~ uniform (0, 2);</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> generated quantities{</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vector[Nobs] Npos_sim;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   vector[Nobs] P_sim;</span>
@@ -128,7 +134,10 @@ In case the .RDS file exists, it is read and returned; otherwise, the object mod
 <span class="r-out co"><span class="r-pr">#&gt;</span>     P_sim[i] = Npos_sim[i] / Ntotal[i];</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     logLikelihood[i] = binomial_lpmf(Npos[i] | Ntotal[i], P[i]);</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> } </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

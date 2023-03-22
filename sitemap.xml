@@ -40,6 +40,9 @@
     <loc>https://trace-lac.github.io/serofoi/reference/fit_seroprev_model.html</loc>
   </url>
   <url>
+    <loc>https://trace-lac.github.io/serofoi/reference/generate_sim_data.html</loc>
+  </url>
+  <url>
     <loc>https://trace-lac.github.io/serofoi/reference/get_comparison_table.html</loc>
   </url>
   <url>
@@ -52,7 +55,13 @@
     <loc>https://trace-lac.github.io/serofoi/reference/get_prev_expanded.html</loc>
   </url>
   <url>
+    <loc>https://trace-lac.github.io/serofoi/reference/get_sim_counts.html</loc>
+  </url>
+  <url>
     <loc>https://trace-lac.github.io/serofoi/reference/get_table_rhats.html</loc>
+  </url>
+  <url>
+    <loc>https://trace-lac.github.io/serofoi/reference/group_sim_data.html</loc>
   </url>
   <url>
     <loc>https://trace-lac.github.io/serofoi/reference/index.html</loc>

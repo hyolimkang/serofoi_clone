@@ -45,7 +45,7 @@
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/simulated_data.html">Simulated data</a>
-    <a class="dropdown-item" href="../articles/use_cases.html">serofoi</a>
+    <a class="dropdown-item" href="../articles/use_cases.html">Use cases</a>
   </div>
 </li>
       </ul>
@@ -203,46 +203,26 @@ varying) available on serofoi.</p>
 <span>                             seroprev_model_name <span class="op">=</span> <span class="st">"constant_foi_bi"</span>,</span>
 <span>                             n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
 <span>                             n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; Running /opt/R/4.2.3/lib/R/bin/R CMD SHLIB foo.c</span></span>
+<span><span class="co">#&gt; gcc -I"/opt/R/4.2.3/lib/R/include" -DNDEBUG   -I"/home/runner/work/_temp/Library/Rcpp/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/unsupported"  -I"/home/runner/work/_temp/Library/BH/include" -I"/home/runner/work/_temp/Library/StanHeaders/include/src/"  -I"/home/runner/work/_temp/Library/StanHeaders/include/"  -I"/home/runner/work/_temp/Library/RcppParallel/include/"  -I"/home/runner/work/_temp/Library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include '/home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/usr/local/include   -fpic  -g -O2  -c foo.c -o foo.o</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:88,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
 <span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
 <span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
 <span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
-<span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
-<span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
+<span><span class="co">#&gt; make: *** [/opt/R/4.2.3/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
 <span><span class="co">#&gt; [1] "serofoi model constant_foi_bi finished running ------"</span></span>
 <span><span class="co">#&gt;                     [,1]              </span></span>
 <span><span class="co">#&gt; seroprev_model_name "constant_foi_bi" </span></span>
@@ -254,54 +234,34 @@ varying) available on serofoi.</p>
 <span><span class="co">#&gt; n_sample            "747"             </span></span>
 <span><span class="co">#&gt; n_agec              "72"              </span></span>
 <span><span class="co">#&gt; n_iter              "500"             </span></span>
-<span><span class="co">#&gt; elpd                "-92.8"           </span></span>
-<span><span class="co">#&gt; se                  "6.4"             </span></span>
+<span><span class="co">#&gt; elpd                "-92.66"          </span></span>
+<span><span class="co">#&gt; se                  "6.54"            </span></span>
 <span><span class="co">#&gt; converged           "Yes"</span></span>
 <span></span>
 <span><span class="va">m2_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seroprev_model.html">run_seroprev_model</a></span><span class="op">(</span>seroprev_data <span class="op">=</span> <span class="va">chagas2012p</span>,</span>
 <span>                             seroprev_model_name <span class="op">=</span> <span class="st">"continuous_foi_normal_bi"</span>,</span>
 <span>                             n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
 <span>                             n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; Running /opt/R/4.2.3/lib/R/bin/R CMD SHLIB foo.c</span></span>
+<span><span class="co">#&gt; gcc -I"/opt/R/4.2.3/lib/R/include" -DNDEBUG   -I"/home/runner/work/_temp/Library/Rcpp/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/unsupported"  -I"/home/runner/work/_temp/Library/BH/include" -I"/home/runner/work/_temp/Library/StanHeaders/include/src/"  -I"/home/runner/work/_temp/Library/StanHeaders/include/"  -I"/home/runner/work/_temp/Library/RcppParallel/include/"  -I"/home/runner/work/_temp/Library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include '/home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/usr/local/include   -fpic  -g -O2  -c foo.c -o foo.o</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:88,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
 <span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
 <span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
 <span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
-<span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
-<span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
+<span><span class="co">#&gt; make: *** [/opt/R/4.2.3/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
 <span><span class="co">#&gt; [1] "serofoi model continuous_foi_normal_bi finished running ------"</span></span>
 <span><span class="co">#&gt;                     [,1]                      </span></span>
 <span><span class="co">#&gt; seroprev_model_name "continuous_foi_normal_bi"</span></span>
@@ -313,8 +273,8 @@ varying) available on serofoi.</p>
 <span><span class="co">#&gt; n_sample            "747"                     </span></span>
 <span><span class="co">#&gt; n_agec              "72"                      </span></span>
 <span><span class="co">#&gt; n_iter              "1500"                    </span></span>
-<span><span class="co">#&gt; elpd                "-74.67"                  </span></span>
-<span><span class="co">#&gt; se                  "5.81"                    </span></span>
+<span><span class="co">#&gt; elpd                "-74.7"                   </span></span>
+<span><span class="co">#&gt; se                  "5.83"                    </span></span>
 <span><span class="co">#&gt; converged           "Yes"</span></span></code></pre></div>
 <p>Now, we can plot the results of the two models to compare (Figure 1).
 As shown in <span class="citation">Cucunubá et al. (<a href="#ref-Cucunub%C3%A12017" role="doc-biblioref">2017</a>)</span>,
@@ -365,46 +325,26 @@ included in serofoi.</p>
 <span>                              seroprev_model_name <span class="op">=</span> <span class="st">"constant_foi_bi"</span>,</span>
 <span>                              n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
 <span>                              n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; Running /opt/R/4.2.3/lib/R/bin/R CMD SHLIB foo.c</span></span>
+<span><span class="co">#&gt; gcc -I"/opt/R/4.2.3/lib/R/include" -DNDEBUG   -I"/home/runner/work/_temp/Library/Rcpp/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/unsupported"  -I"/home/runner/work/_temp/Library/BH/include" -I"/home/runner/work/_temp/Library/StanHeaders/include/src/"  -I"/home/runner/work/_temp/Library/StanHeaders/include/"  -I"/home/runner/work/_temp/Library/RcppParallel/include/"  -I"/home/runner/work/_temp/Library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include '/home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/usr/local/include   -fpic  -g -O2  -c foo.c -o foo.o</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:88,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
 <span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
 <span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
 <span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
-<span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
-<span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
+<span><span class="co">#&gt; make: *** [/opt/R/4.2.3/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
 <span><span class="co">#&gt; [1] "serofoi model constant_foi_bi finished running ------"</span></span>
 <span><span class="co">#&gt;                     [,1]             </span></span>
 <span><span class="co">#&gt; seroprev_model_name "constant_foi_bi"</span></span>
@@ -424,46 +364,26 @@ included in serofoi.</p>
 <span>                              seroprev_model_name <span class="op">=</span> <span class="st">"continuous_foi_normal_bi"</span>,</span>
 <span>                              n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
 <span>                              n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; Running /opt/R/4.2.3/lib/R/bin/R CMD SHLIB foo.c</span></span>
+<span><span class="co">#&gt; gcc -I"/opt/R/4.2.3/lib/R/include" -DNDEBUG   -I"/home/runner/work/_temp/Library/Rcpp/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/unsupported"  -I"/home/runner/work/_temp/Library/BH/include" -I"/home/runner/work/_temp/Library/StanHeaders/include/src/"  -I"/home/runner/work/_temp/Library/StanHeaders/include/"  -I"/home/runner/work/_temp/Library/RcppParallel/include/"  -I"/home/runner/work/_temp/Library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include '/home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/usr/local/include   -fpic  -g -O2  -c foo.c -o foo.o</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:88,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
 <span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
 <span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
 <span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
-<span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
-<span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
+<span><span class="co">#&gt; make: *** [/opt/R/4.2.3/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
 <span><span class="co">#&gt; [1] "serofoi model continuous_foi_normal_bi finished running ------"</span></span>
 <span><span class="co">#&gt;                     [,1]                      </span></span>
 <span><span class="co">#&gt; seroprev_model_name "continuous_foi_normal_bi"</span></span>
@@ -475,54 +395,34 @@ included in serofoi.</p>
 <span><span class="co">#&gt; n_sample            "146"                     </span></span>
 <span><span class="co">#&gt; n_agec              "17"                      </span></span>
 <span><span class="co">#&gt; n_iter              "500"                     </span></span>
-<span><span class="co">#&gt; elpd                "-29.23"                  </span></span>
-<span><span class="co">#&gt; se                  "7.38"                    </span></span>
+<span><span class="co">#&gt; elpd                "-28.74"                  </span></span>
+<span><span class="co">#&gt; se                  "7.04"                    </span></span>
 <span><span class="co">#&gt; converged           "Yes"</span></span>
 <span></span>
 <span><span class="va">m3_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seroprev_model.html">run_seroprev_model</a></span><span class="op">(</span>seroprev_data <span class="op">=</span> <span class="va">veev2012p</span>,</span>
 <span>                              seroprev_model_name <span class="op">=</span> <span class="st">"continuous_foi_normal_log"</span>,</span>
 <span>                              n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
 <span>                              n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; Running /opt/R/4.2.3/lib/R/bin/R CMD SHLIB foo.c</span></span>
+<span><span class="co">#&gt; gcc -I"/opt/R/4.2.3/lib/R/include" -DNDEBUG   -I"/home/runner/work/_temp/Library/Rcpp/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/unsupported"  -I"/home/runner/work/_temp/Library/BH/include" -I"/home/runner/work/_temp/Library/StanHeaders/include/src/"  -I"/home/runner/work/_temp/Library/StanHeaders/include/"  -I"/home/runner/work/_temp/Library/RcppParallel/include/"  -I"/home/runner/work/_temp/Library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include '/home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/usr/local/include   -fpic  -g -O2  -c foo.c -o foo.o</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:88,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
 <span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
 <span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
 <span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
-<span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
-<span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
+<span><span class="co">#&gt; make: *** [/opt/R/4.2.3/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
 <span><span class="co">#&gt; [1] "serofoi model continuous_foi_normal_log finished running ------"</span></span>
 <span><span class="co">#&gt;                     [,1]                       </span></span>
 <span><span class="co">#&gt; seroprev_model_name "continuous_foi_normal_log"</span></span>
@@ -534,8 +434,8 @@ included in serofoi.</p>
 <span><span class="co">#&gt; n_sample            "146"                      </span></span>
 <span><span class="co">#&gt; n_agec              "17"                       </span></span>
 <span><span class="co">#&gt; n_iter              "500"                      </span></span>
-<span><span class="co">#&gt; elpd                "-22.19"                   </span></span>
-<span><span class="co">#&gt; se                  "3.14"                     </span></span>
+<span><span class="co">#&gt; elpd                "-22"                      </span></span>
+<span><span class="co">#&gt; se                  "2.99"                     </span></span>
 <span><span class="co">#&gt; converged           "Yes"</span></span></code></pre></div>
 <p>Now, we can plot the results of the three models to compare. On
 Figure 3, we can observe a large increase in the estimated FOI. As
@@ -586,46 +486,26 @@ against Chikungunya virus) in Bahia, Brazil during October-December
 <span>                                seroprev_model_name <span class="op">=</span> <span class="st">"constant_foi_bi"</span>,</span>
 <span>                                n_iters <span class="op">=</span> <span class="fl">1000</span>, </span>
 <span>                                n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; Running /opt/R/4.2.3/lib/R/bin/R CMD SHLIB foo.c</span></span>
+<span><span class="co">#&gt; gcc -I"/opt/R/4.2.3/lib/R/include" -DNDEBUG   -I"/home/runner/work/_temp/Library/Rcpp/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/unsupported"  -I"/home/runner/work/_temp/Library/BH/include" -I"/home/runner/work/_temp/Library/StanHeaders/include/src/"  -I"/home/runner/work/_temp/Library/StanHeaders/include/"  -I"/home/runner/work/_temp/Library/RcppParallel/include/"  -I"/home/runner/work/_temp/Library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include '/home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/usr/local/include   -fpic  -g -O2  -c foo.c -o foo.o</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:88,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
 <span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
 <span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
 <span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
-<span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
-<span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
+<span><span class="co">#&gt; make: *** [/opt/R/4.2.3/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
 <span><span class="co">#&gt; [1] "serofoi model constant_foi_bi finished running ------"</span></span>
 <span><span class="co">#&gt;                     [,1]             </span></span>
 <span><span class="co">#&gt; seroprev_model_name "constant_foi_bi"</span></span>
@@ -645,46 +525,26 @@ against Chikungunya virus) in Bahia, Brazil during October-December
 <span>                                seroprev_model_name <span class="op">=</span> <span class="st">"continuous_foi_normal_bi"</span>,</span>
 <span>                                n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
 <span>                                n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; Running /opt/R/4.2.3/lib/R/bin/R CMD SHLIB foo.c</span></span>
+<span><span class="co">#&gt; gcc -I"/opt/R/4.2.3/lib/R/include" -DNDEBUG   -I"/home/runner/work/_temp/Library/Rcpp/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/unsupported"  -I"/home/runner/work/_temp/Library/BH/include" -I"/home/runner/work/_temp/Library/StanHeaders/include/src/"  -I"/home/runner/work/_temp/Library/StanHeaders/include/"  -I"/home/runner/work/_temp/Library/RcppParallel/include/"  -I"/home/runner/work/_temp/Library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include '/home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/usr/local/include   -fpic  -g -O2  -c foo.c -o foo.o</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:88,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
 <span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
 <span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
 <span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
-<span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
-<span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
+<span><span class="co">#&gt; make: *** [/opt/R/4.2.3/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
 <span><span class="co">#&gt; [1] "serofoi model continuous_foi_normal_bi finished running ------"</span></span>
 <span><span class="co">#&gt;                     [,1]                      </span></span>
 <span><span class="co">#&gt; seroprev_model_name "continuous_foi_normal_bi"</span></span>
@@ -696,54 +556,34 @@ against Chikungunya virus) in Bahia, Brazil during October-December
 <span><span class="co">#&gt; n_sample            "446"                     </span></span>
 <span><span class="co">#&gt; n_agec              "4"                       </span></span>
 <span><span class="co">#&gt; n_iter              "1500"                    </span></span>
-<span><span class="co">#&gt; elpd                "-20.8"                   </span></span>
-<span><span class="co">#&gt; se                  "2.08"                    </span></span>
+<span><span class="co">#&gt; elpd                "-20.76"                  </span></span>
+<span><span class="co">#&gt; se                  "1.98"                    </span></span>
 <span><span class="co">#&gt; converged           "Yes"</span></span>
 <span></span>
 <span><span class="va">mod3_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seroprev_model.html">run_seroprev_model</a></span><span class="op">(</span>seroprev_data <span class="op">=</span> <span class="va">chik2015p</span>,</span>
 <span>                     seroprev_model_name <span class="op">=</span> <span class="st">"continuous_foi_normal_log"</span>,</span>
 <span>                     n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
 <span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; Running /opt/R/4.2.3/lib/R/bin/R CMD SHLIB foo.c</span></span>
+<span><span class="co">#&gt; gcc -I"/opt/R/4.2.3/lib/R/include" -DNDEBUG   -I"/home/runner/work/_temp/Library/Rcpp/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/"  -I"/home/runner/work/_temp/Library/RcppEigen/include/unsupported"  -I"/home/runner/work/_temp/Library/BH/include" -I"/home/runner/work/_temp/Library/StanHeaders/include/src/"  -I"/home/runner/work/_temp/Library/StanHeaders/include/"  -I"/home/runner/work/_temp/Library/RcppParallel/include/"  -I"/home/runner/work/_temp/Library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include '/home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/usr/local/include   -fpic  -g -O2  -c foo.c -o foo.o</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:88,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
 <span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
 <span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
+<span><span class="co">#&gt; In file included from /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Dense:1,</span></span>
+<span><span class="co">#&gt;                  from /home/runner/work/_temp/Library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13,</span></span>
 <span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
+<span><span class="co">#&gt; /home/runner/work/_temp/Library/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
 <span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
 <span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
 <span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
-<span><span class="co">#&gt; Running /usr/lib/R/bin/R CMD SHLIB foo.c</span></span>
-<span><span class="co">#&gt; gcc -I"/usr/share/R/include" -DNDEBUG   -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/Rcpp/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/unsupported"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/BH/include" -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/src/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppParallel/include/"  -I"/home/acer/R/x86_64-pc-linux-gnu-library/4.2/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DUSE_STANC3 -DSTRICT_R_HEADERS  -DBOOST_PHOENIX_NO_VARIADIC_EXPRESSION  -DBOOST_NO_AUTO_PTR  -include '/home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1      -fpic  -g -O2 -ffile-prefix-map=/build/r-base-Faorqz/r-base-4.2.2.20221110=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c foo.c -o foo.o</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:88,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name ‘namespace’</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       | ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:17: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token</span></span>
-<span><span class="co">#&gt;   628 | namespace Eigen {</span></span>
-<span><span class="co">#&gt;       |                 ^</span></span>
-<span><span class="co">#&gt; In file included from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Dense:1,</span></span>
-<span><span class="co">#&gt;                  from /home/acer/R/x86_64-pc-linux-gnu-library/4.2/StanHeaders/include/stan/math/prim/fun/Eigen.hpp:22,</span></span>
-<span><span class="co">#&gt;                  from &lt;command-line&gt;:</span></span>
-<span><span class="co">#&gt; /home/acer/R/x86_64-pc-linux-gnu-library/4.2/RcppEigen/include/Eigen/Core:96:10: fatal error: complex: No such file or directory</span></span>
-<span><span class="co">#&gt;    96 | #include &lt;complex&gt;</span></span>
-<span><span class="co">#&gt;       |          ^~~~~~~~~</span></span>
-<span><span class="co">#&gt; compilation terminated.</span></span>
-<span><span class="co">#&gt; make: *** [/usr/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
+<span><span class="co">#&gt; make: *** [/opt/R/4.2.3/lib/R/etc/Makeconf:169: foo.o] Error 1</span></span>
 <span><span class="co">#&gt; [1] "serofoi model continuous_foi_normal_log finished running ------"</span></span>
 <span><span class="co">#&gt;                     [,1]                       </span></span>
 <span><span class="co">#&gt; seroprev_model_name "continuous_foi_normal_log"</span></span>
@@ -755,8 +595,8 @@ against Chikungunya virus) in Bahia, Brazil during October-December
 <span><span class="co">#&gt; n_sample            "446"                      </span></span>
 <span><span class="co">#&gt; n_agec              "4"                        </span></span>
 <span><span class="co">#&gt; n_iter              "1500"                     </span></span>
-<span><span class="co">#&gt; elpd                "-12.54"                   </span></span>
-<span><span class="co">#&gt; se                  "0.76"                     </span></span>
+<span><span class="co">#&gt; elpd                "-12.58"                   </span></span>
+<span><span class="co">#&gt; se                  "0.81"                     </span></span>
 <span><span class="co">#&gt; converged           "Yes"</span></span></code></pre></div>
 <p>In Figure 4, we can observe the comparison between the three serofoi
 models. Here serofoi shows strong statistical support for a sudden
