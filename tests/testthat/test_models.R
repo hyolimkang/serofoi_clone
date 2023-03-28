@@ -22,19 +22,39 @@ test_that("individual models", {
   vdiffr::expect_doppelganger("serodata_plot", data_test_plot)
 
   #----- Test each model
-  models_to_run <- c("constant_foi_bi",
-                     "continuous_foi_normal_bi",
-                     "continuous_foi_normal_log")
+  models_to_run <- c(
+    "constant_foi_bi",
+    "continuous_foi_normal_bi",
+    "continuous_foi_normal_log"
+  )
   models_short_names <- c("constant", "normal", "normal_log")
 
   # models_list <- lapply(models_to_run, run_seromodel, serodata = data_test, n_iters = 1000)
 
+
+  comp_funcs_foi_cent_est <- list(
+    year = equal_exact(),
+    lower = equal_with_tolerance(),
+    upper = equal_with_tolerance(),
+    medianv = equal_with_tolerance()
+  )
+
   #----- Generate plots for each model
-  i = 1
+  i <- 1
   for (model_name in models_to_run) {
-    model <- run_seromodel(serodata = data_test,
-                           seromodel_name = model_name,
-                           n_iters = 1000)
+    model <- run_seromodel(
+      serodata = data_test,
+      seromodel_name = model_name,
+      n_iters = 1000
+    )
+    expect_similar_dataframes(
+      paste(model_name, "foi_cent_est", sep = "_"),
+      model[["foi_cent_est"]],
+      comp_funcs_foi_cent_est
+    )
+    # TODO compare foi_post_s too
+
+
     model_plot <- plot_seromodel(model, size_text = 6)
     vdiffr::expect_doppelganger(paste0(models_short_names[i], "_model_plot"), model_plot)
 
@@ -46,6 +66,6 @@ test_that("individual models", {
 
     model_rhats_plot <- plot_rhats(model, size_text = 15)
     vdiffr::expect_doppelganger(paste0(models_short_names[i], "_rhats_plot"), model_rhats_plot)
-    i = i + 1
+    i <- i + 1
   }
 })

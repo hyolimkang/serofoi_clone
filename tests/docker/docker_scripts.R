@@ -17,6 +17,11 @@ system(
     "docker container kill rtest-container ; docker container rm rtest-container ; docker container run  --rm --name rtest-container  --env R_LIBS=/root/.R/site-library  -v rtest-site-library:/root/.R/site-library rtest-image 'cd /package && ./run_tests.sh'"
 )
 
+# Code coverage
+system(
+    "docker container kill rtest-container ; docker container rm rtest-container ; docker container run  --rm --name rtest-container  --env R_LIBS=/root/.R/site-library  -v rtest-site-library:/root/.R/site-library rtest-image 'cd /package && ./codecov.sh'"
+)
+
 # R CMD Check
 system(
     "docker container kill rtest-container ; docker container rm rtest-container ; docker container run  --rm --name rtest-container  --env R_LIBS=/root/.R/site-library  -v rtest-site-library:/root/.R/site-library rtest-image 'cd /package && ./check.sh'"

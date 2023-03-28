@@ -25,6 +25,9 @@ equal_exact <- function() {
 
 # TODO use testthat snapshots
 expect_similar_dataframes <- function(name, actual_df, column_comparation_functions) {
+    if (is.null(actual_df)) {
+        succeed()
+    }
     actual_df_filename <- file.path(tempdir(), paste(name, "csv", sep = "."))
     write.csv(actual_df, actual_df_filename)
     compare_fun <- function(expected_df_filename, actual_df_filename) {
