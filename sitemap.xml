@@ -34,16 +34,10 @@
     <loc>https://trace-lac.github.io/serofoi/reference/chik2015.html</loc>
   </url>
   <url>
-    <loc>https://trace-lac.github.io/serofoi/reference/extract_seroprev_model_summary.html</loc>
+    <loc>https://trace-lac.github.io/serofoi/reference/extract_seromodel_summary.html</loc>
   </url>
   <url>
-    <loc>https://trace-lac.github.io/serofoi/reference/fit_seroprev_model.html</loc>
-  </url>
-  <url>
-    <loc>https://trace-lac.github.io/serofoi/reference/generate_sim_data.html</loc>
-  </url>
-  <url>
-    <loc>https://trace-lac.github.io/serofoi/reference/get_comparison_table.html</loc>
+    <loc>https://trace-lac.github.io/serofoi/reference/fit_seromodel.html</loc>
   </url>
   <url>
     <loc>https://trace-lac.github.io/serofoi/reference/get_exposure_ages.html</loc>
@@ -55,13 +49,7 @@
     <loc>https://trace-lac.github.io/serofoi/reference/get_prev_expanded.html</loc>
   </url>
   <url>
-    <loc>https://trace-lac.github.io/serofoi/reference/get_sim_counts.html</loc>
-  </url>
-  <url>
     <loc>https://trace-lac.github.io/serofoi/reference/get_table_rhats.html</loc>
-  </url>
-  <url>
-    <loc>https://trace-lac.github.io/serofoi/reference/group_sim_data.html</loc>
   </url>
   <url>
     <loc>https://trace-lac.github.io/serofoi/reference/index.html</loc>
@@ -76,25 +64,22 @@
     <loc>https://trace-lac.github.io/serofoi/reference/plot_rhats.html</loc>
   </url>
   <url>
+    <loc>https://trace-lac.github.io/serofoi/reference/plot_seromodel.html</loc>
+  </url>
+  <url>
     <loc>https://trace-lac.github.io/serofoi/reference/plot_seroprev.html</loc>
   </url>
   <url>
     <loc>https://trace-lac.github.io/serofoi/reference/plot_seroprev_fitted.html</loc>
   </url>
   <url>
-    <loc>https://trace-lac.github.io/serofoi/reference/plot_seroprev_model.html</loc>
-  </url>
-  <url>
-    <loc>https://trace-lac.github.io/serofoi/reference/plot_seroprev_models_grid.html</loc>
-  </url>
-  <url>
     <loc>https://trace-lac.github.io/serofoi/reference/prepare_bin_data.html</loc>
   </url>
   <url>
-    <loc>https://trace-lac.github.io/serofoi/reference/prepare_seroprev_data.html</loc>
+    <loc>https://trace-lac.github.io/serofoi/reference/prepare_serodata.html</loc>
   </url>
   <url>
-    <loc>https://trace-lac.github.io/serofoi/reference/run_seroprev_model.html</loc>
+    <loc>https://trace-lac.github.io/serofoi/reference/run_seromodel.html</loc>
   </url>
   <url>
     <loc>https://trace-lac.github.io/serofoi/reference/save_or_load_model.html</loc>

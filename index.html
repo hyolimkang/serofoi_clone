@@ -102,17 +102,17 @@
 <span><span class="co">#&gt; 3 IgG anti-T.cruzi</span></span>
 <span><span class="co">#&gt; 4 IgG anti-T.cruzi</span></span>
 <span><span class="co">#&gt; 5 IgG anti-T.cruzi</span></span></code></pre></div>
-<p>The function <code>prepare_seroprev_data</code> will prepare the entry data for entering the modelling functions. The seroprevalence <em>prepared data</em> can be visualised with the <code>plot_seroprev</code> function. This function also plots the binomial confidence interval of the observed data.</p>
+<p>The function <code>prepare_serodata</code> will prepare the entry data for entering the modelling functions. The seroprevalence <em>prepared data</em> can be visualised with the <code>plot_seroprev</code> function. This function also plots the binomial confidence interval of the observed data.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">data_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/prepare_seroprev_data.html">prepare_seroprev_data</a></span><span class="op">(</span><span class="va">serodata</span><span class="op">)</span></span>
+<span><span class="va">data_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/prepare_serodata.html">prepare_serodata</a></span><span class="op">(</span><span class="va">serodata</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/plot_seroprev.html">plot_seroprev</a></span><span class="op">(</span><span class="va">data_test</span>, size_text <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></code></pre></div>
 <p><img src="reference/figures/README-data_test-1.png" width="100%"></p>
 <div class="section level4">
 <h4 id="current-version-of-the-package-runs-three-different-foi-models">Current version of the package runs <strong><em>three</em></strong> different FoI models<a class="anchor" aria-label="anchor" href="#current-version-of-the-package-runs-three-different-foi-models"></a>
 </h4>
-<p>The <code>run_seroprev_model</code> function allows specifying the Bayesian model from <em>R</em>, while running in the back from <code>rstan</code>. The number of iterations, thinning, and other parameters can be customised.</p>
+<p>The <code>run_seromodel</code> function allows specifying the Bayesian model from <em>R</em>, while running in the back from <code>rstan</code>. The number of iterations, thinning, and other parameters can be customised.</p>
 <div class="alert alert-primary">
 <p>NOTE: Running the <em>serofoi</em> models for the first time on your local computer make take a few minutes while the <em>rstan</em> code is compiled locally. Afterwards, no further local compilation is needed.</p>
 </div>
@@ -122,13 +122,13 @@
 </h4>
 <p>For the <em>endemic model</em> a small number of iterations is enough for achieving convergence, as it only fits one parameter (the constant FoI) from a binomial distribution.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">model_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_seroprev_model.html">run_seroprev_model</a></span><span class="op">(</span>seroprev_data <span class="op">=</span> <span class="va">data_test</span>,</span>
-<span>                     seroprev_model_name <span class="op">=</span> <span class="st">"constant_foi_bi"</span>,</span>
+<code class="sourceCode R"><span><span class="va">model_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">data_test</span>,</span>
+<span>                     seromodel_name <span class="op">=</span> <span class="st">"constant_foi_bi"</span>,</span>
 <span>                     n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
 <span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "serofoi model constant_foi_bi finished running ------"</span></span>
 <span><span class="co">#&gt;                     [,1]              </span></span>
-<span><span class="co">#&gt; seroprev_model_name "constant_foi_bi" </span></span>
+<span><span class="co">#&gt; seromodel_name "constant_foi_bi" </span></span>
 <span><span class="co">#&gt; dataset             "COL-035-93"      </span></span>
 <span><span class="co">#&gt; country             "COL"             </span></span>
 <span><span class="co">#&gt; year                "2012"            </span></span>
@@ -146,13 +146,13 @@
 </h4>
 <p>For the <em>epidemic model,</em> a larger number of iterations is required for achieving convergence, as it fits yearly FoI values from a binomial distribution. The number of iterations required may depend on the number of years, reflected by the difference between year of the serosurvey and the maximum age-class sampled.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">model_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_seroprev_model.html">run_seroprev_model</a></span><span class="op">(</span>seroprev_data <span class="op">=</span> <span class="va">data_test</span>,</span>
-<span>                     seroprev_model_name <span class="op">=</span> <span class="st">"continuous_foi_normal_bi"</span>,</span>
+<code class="sourceCode R"><span><span class="va">model_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">data_test</span>,</span>
+<span>                     seromodel_name <span class="op">=</span> <span class="st">"continuous_foi_normal_bi"</span>,</span>
 <span>                     n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
 <span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "serofoi model continuous_foi_normal_bi finished running ------"</span></span>
 <span><span class="co">#&gt;                     [,1]                      </span></span>
-<span><span class="co">#&gt; seroprev_model_name "continuous_foi_normal_bi"</span></span>
+<span><span class="co">#&gt; seromodel_name "continuous_foi_normal_bi"</span></span>
 <span><span class="co">#&gt; dataset             "COL-035-93"              </span></span>
 <span><span class="co">#&gt; country             "COL"                     </span></span>
 <span><span class="co">#&gt; year                "2012"                    </span></span>
@@ -170,13 +170,13 @@
 </h4>
 <p>For the <em>fast</em> <em>epidemic model,</em> a larger number of iterations is required for achieving convergence, compared to the previous models.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">model_3</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_seroprev_model.html">run_seroprev_model</a></span><span class="op">(</span>seroprev_data <span class="op">=</span> <span class="va">data_test</span>,</span>
-<span>                     seroprev_model_name <span class="op">=</span> <span class="st">"continuous_foi_normal_log"</span>,</span>
+<code class="sourceCode R"><span><span class="va">model_3</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">data_test</span>,</span>
+<span>                     seromodel_name <span class="op">=</span> <span class="st">"continuous_foi_normal_log"</span>,</span>
 <span>                     n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
 <span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "serofoi model continuous_foi_normal_log finished running ------"</span></span>
 <span><span class="co">#&gt;                     [,1]                       </span></span>
-<span><span class="co">#&gt; seroprev_model_name "continuous_foi_normal_log"</span></span>
+<span><span class="co">#&gt; seromodel_name "continuous_foi_normal_log"</span></span>
 <span><span class="co">#&gt; dataset             "COL-035-93"               </span></span>
 <span><span class="co">#&gt; country             "COL"                      </span></span>
 <span><span class="co">#&gt; year                "2012"                     </span></span>
@@ -189,7 +189,7 @@
 <span><span class="co">#&gt; se                  "7.15"                     </span></span>
 <span><span class="co">#&gt; converged           "Yes"</span></span></code></pre></div>
 <p>For each model, the plot_seroprev_model function generate a vertical arrange of plots summarising the results of the model implementation plotting functions. Crucially, it shows the (expected) log-predictive density <code>elpd</code>, standard error <code>se</code>, and allows to check convergence based on <code>R-hat</code> convergence diagnostics.</p>
-<p>Also, the <code>plot_seroprev_models_grid</code> allows a visual a comparison of the models based on the (expected) log-predictive density <code>elpd</code>, standard error <code>se</code>, and allows to check convergence based on <code>R-hat</code> convergence diagnostics.</p>
+<p>Also, by means of the function <code><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">cowplot::plot_grid</a></code> a comparison of the models based on the (expected) log-predictive density <code>elpd</code>, standard error <code>se</code>, and allows to check convergence based on <code>R-hat</code> convergence diagnostics can be visualized.</p>
 <p>For more detailed information and examples, please check the <a href="https://epiverse-trace.github.io/serofoi/articles" class="external-link">online documentation</a> as package vignettes under Get Started.</p>
 </div>
 <div class="section level3">

@@ -179,7 +179,7 @@ sero-prevalence of IgG antibodies against <em>Trypanosoma cruzi</em>
 infection in rural area of Colombia in 2012. The dataset is part of the
 serofoi package as <code>chagas2012</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">chagas2012</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">"../data/chagas2012.RDS"</span><span class="op">)</span> <span class="co"># This can be removed once data is incorporated</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"chagas2012"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">chagas2012</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt;       survey total counts age_min age_max year_init year_end tsur country  test</span></span>
 <span><span class="co">#&gt; 1 COL-035-93    34      0       1       1      2012     2012 2012     COL ELISA</span></span>
@@ -197,45 +197,45 @@ serofoi package as <code>chagas2012</code>.</p>
 varying) available on serofoi.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">chagas2012p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_seroprev_data.html">prepare_seroprev_data</a></span><span class="op">(</span><span class="va">chagas2012</span><span class="op">)</span></span>
+<span><span class="va">chagas2012p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_serodata.html">prepare_serodata</a></span><span class="op">(</span><span class="va">chagas2012</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">m1_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seroprev_model.html">run_seroprev_model</a></span><span class="op">(</span>seroprev_data <span class="op">=</span> <span class="va">chagas2012p</span>,</span>
-<span>                     seroprev_model_name <span class="op">=</span> <span class="st">"constant_foi_bi"</span>,</span>
+<span><span class="va">m1_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chagas2012p</span>,</span>
+<span>                     seromodel_name <span class="op">=</span> <span class="st">"constant_foi_bi"</span>,</span>
 <span>                     n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
 <span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "serofoi model constant_foi_bi finished running ------"</span></span>
-<span><span class="co">#&gt;                     [,1]              </span></span>
-<span><span class="co">#&gt; seroprev_model_name "constant_foi_bi" </span></span>
-<span><span class="co">#&gt; dataset             "COL-035-93"      </span></span>
-<span><span class="co">#&gt; country             "COL"             </span></span>
-<span><span class="co">#&gt; year                "2012"            </span></span>
-<span><span class="co">#&gt; test                "ELISA"           </span></span>
-<span><span class="co">#&gt; antibody            "IgG anti-T.cruzi"</span></span>
-<span><span class="co">#&gt; n_sample            "747"             </span></span>
-<span><span class="co">#&gt; n_agec              "72"              </span></span>
-<span><span class="co">#&gt; n_iter              "500"             </span></span>
-<span><span class="co">#&gt; elpd                "-92.66"          </span></span>
-<span><span class="co">#&gt; se                  "6.54"            </span></span>
-<span><span class="co">#&gt; converged           "Yes"</span></span>
+<span><span class="co">#&gt;                [,1]              </span></span>
+<span><span class="co">#&gt; seromodel_name "constant_foi_bi" </span></span>
+<span><span class="co">#&gt; dataset        "COL-035-93"      </span></span>
+<span><span class="co">#&gt; country        "COL"             </span></span>
+<span><span class="co">#&gt; year           "2012"            </span></span>
+<span><span class="co">#&gt; test           "ELISA"           </span></span>
+<span><span class="co">#&gt; antibody       "IgG anti-T.cruzi"</span></span>
+<span><span class="co">#&gt; n_sample       "747"             </span></span>
+<span><span class="co">#&gt; n_agec         "72"              </span></span>
+<span><span class="co">#&gt; n_iter         "500"             </span></span>
+<span><span class="co">#&gt; elpd           "-92.66"          </span></span>
+<span><span class="co">#&gt; se             "6.54"            </span></span>
+<span><span class="co">#&gt; converged      "Yes"</span></span>
 <span></span>
-<span><span class="va">m2_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seroprev_model.html">run_seroprev_model</a></span><span class="op">(</span>seroprev_data <span class="op">=</span> <span class="va">chagas2012p</span>,</span>
-<span>                     seroprev_model_name <span class="op">=</span> <span class="st">"continuous_foi_normal_bi"</span>,</span>
+<span><span class="va">m2_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chagas2012p</span>,</span>
+<span>                     seromodel_name <span class="op">=</span> <span class="st">"continuous_foi_normal_bi"</span>,</span>
 <span>                     n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
 <span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "serofoi model continuous_foi_normal_bi finished running ------"</span></span>
-<span><span class="co">#&gt;                     [,1]                      </span></span>
-<span><span class="co">#&gt; seroprev_model_name "continuous_foi_normal_bi"</span></span>
-<span><span class="co">#&gt; dataset             "COL-035-93"              </span></span>
-<span><span class="co">#&gt; country             "COL"                     </span></span>
-<span><span class="co">#&gt; year                "2012"                    </span></span>
-<span><span class="co">#&gt; test                "ELISA"                   </span></span>
-<span><span class="co">#&gt; antibody            "IgG anti-T.cruzi"        </span></span>
-<span><span class="co">#&gt; n_sample            "747"                     </span></span>
-<span><span class="co">#&gt; n_agec              "72"                      </span></span>
-<span><span class="co">#&gt; n_iter              "1500"                    </span></span>
-<span><span class="co">#&gt; elpd                "-74.7"                   </span></span>
-<span><span class="co">#&gt; se                  "5.83"                    </span></span>
-<span><span class="co">#&gt; converged           "Yes"</span></span></code></pre></div>
+<span><span class="co">#&gt;                [,1]                      </span></span>
+<span><span class="co">#&gt; seromodel_name "continuous_foi_normal_bi"</span></span>
+<span><span class="co">#&gt; dataset        "COL-035-93"              </span></span>
+<span><span class="co">#&gt; country        "COL"                     </span></span>
+<span><span class="co">#&gt; year           "2012"                    </span></span>
+<span><span class="co">#&gt; test           "ELISA"                   </span></span>
+<span><span class="co">#&gt; antibody       "IgG anti-T.cruzi"        </span></span>
+<span><span class="co">#&gt; n_sample       "747"                     </span></span>
+<span><span class="co">#&gt; n_agec         "72"                      </span></span>
+<span><span class="co">#&gt; n_iter         "1500"                    </span></span>
+<span><span class="co">#&gt; elpd           "-74.7"                   </span></span>
+<span><span class="co">#&gt; se             "5.83"                    </span></span>
+<span><span class="co">#&gt; converged      "Yes"</span></span></code></pre></div>
 <p>Now, we can plot the results of the two models to compare (Figure 1).
 As shown in <span class="citation">Cucunubá et al. (<a href="#ref-Cucunub%C3%A12017" role="doc-biblioref">2017</a>)</span>,
 interventions for Chagas control have been ongoing from the 1980s in
@@ -246,10 +246,10 @@ relevant slow decreasing trend consistent (model 2) as slightly better
 supported than the constant model. Notice that model 3 does not converge
 despite a high number of iterations.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p1_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seroprev_model.html">plot_seroprev_model</a></span><span class="op">(</span><span class="va">m1_cha</span>, size_text <span class="op">=</span> <span class="fl">12</span>, max_lambda <span class="op">=</span> <span class="fl">0.02</span><span class="op">)</span></span>
-<span><span class="va">p2_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seroprev_model.html">plot_seroprev_model</a></span><span class="op">(</span><span class="va">m2_cha</span>, size_text <span class="op">=</span> <span class="fl">12</span>, max_lambda <span class="op">=</span> <span class="fl">0.02</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">p1_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m1_cha</span>, size_text <span class="op">=</span> <span class="fl">12</span>, max_lambda <span class="op">=</span> <span class="fl">0.02</span><span class="op">)</span></span>
+<span><span class="va">p2_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m2_cha</span>, size_text <span class="op">=</span> <span class="fl">12</span>, max_lambda <span class="op">=</span> <span class="fl">0.02</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="../reference/plot_seroprev_models_grid.html">plot_seroprev_models_grid</a></span><span class="op">(</span><span class="va">p1_cha</span>, <span class="va">p2_cha</span>, n_row <span class="op">=</span> <span class="fl">1</span>, n_col <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">plot_grid</a></span><span class="op">(</span><span class="va">p1_cha</span>, <span class="va">p2_cha</span>, nrow <span class="op">=</span> <span class="fl">1</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="use_cases_files/figure-html/model_comp_cha-1.png" width="768"></p>
 </div>
 <div class="section level3">
@@ -262,8 +262,7 @@ antibodies againts Venezuelan Equine Encephalitis Virus (VEEV) in a
 rural village in Panamá in 2017. This dataset, <code>veev2017</code> is
 included in serofoi.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">veev2012</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">"../data/veev2012.RDS"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"veev2012"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">veev2012</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt;          survey total counts age_min age_max year_init year_end tsur country</span></span>
 <span><span class="co">#&gt; 1 PAN-2012-VEEV     6      3       1       5      2012     2012 2012     PAN</span></span>
@@ -279,64 +278,64 @@ included in serofoi.</p>
 <span><span class="co">#&gt; 5 ELISA IgG anti-VEEV</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">veev2012p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_seroprev_data.html">prepare_seroprev_data</a></span><span class="op">(</span><span class="va">veev2012</span><span class="op">)</span></span>
+<span><span class="va">veev2012p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_serodata.html">prepare_serodata</a></span><span class="op">(</span><span class="va">veev2012</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">m1_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seroprev_model.html">run_seroprev_model</a></span><span class="op">(</span>seroprev_data <span class="op">=</span> <span class="va">veev2012p</span>,</span>
-<span>                     seroprev_model_name <span class="op">=</span> <span class="st">"constant_foi_bi"</span>,</span>
+<span><span class="va">m1_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">veev2012p</span>,</span>
+<span>                     seromodel_name <span class="op">=</span> <span class="st">"constant_foi_bi"</span>,</span>
 <span>                     n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
 <span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "serofoi model constant_foi_bi finished running ------"</span></span>
-<span><span class="co">#&gt;                     [,1]             </span></span>
-<span><span class="co">#&gt; seroprev_model_name "constant_foi_bi"</span></span>
-<span><span class="co">#&gt; dataset             "PAN-2012-VEEV"  </span></span>
-<span><span class="co">#&gt; country             "PAN"            </span></span>
-<span><span class="co">#&gt; year                "2012"           </span></span>
-<span><span class="co">#&gt; test                "ELISA"          </span></span>
-<span><span class="co">#&gt; antibody            "IgG anti-VEEV"  </span></span>
-<span><span class="co">#&gt; n_sample            "146"            </span></span>
-<span><span class="co">#&gt; n_agec              "17"             </span></span>
-<span><span class="co">#&gt; n_iter              "500"            </span></span>
-<span><span class="co">#&gt; elpd                "-43.81"         </span></span>
-<span><span class="co">#&gt; se                  "13.9"           </span></span>
-<span><span class="co">#&gt; converged           "Yes"</span></span>
+<span><span class="co">#&gt;                [,1]             </span></span>
+<span><span class="co">#&gt; seromodel_name "constant_foi_bi"</span></span>
+<span><span class="co">#&gt; dataset        "PAN-2012-VEEV"  </span></span>
+<span><span class="co">#&gt; country        "PAN"            </span></span>
+<span><span class="co">#&gt; year           "2012"           </span></span>
+<span><span class="co">#&gt; test           "ELISA"          </span></span>
+<span><span class="co">#&gt; antibody       "IgG anti-VEEV"  </span></span>
+<span><span class="co">#&gt; n_sample       "146"            </span></span>
+<span><span class="co">#&gt; n_agec         "17"             </span></span>
+<span><span class="co">#&gt; n_iter         "500"            </span></span>
+<span><span class="co">#&gt; elpd           "-43.81"         </span></span>
+<span><span class="co">#&gt; se             "13.9"           </span></span>
+<span><span class="co">#&gt; converged      "Yes"</span></span>
 <span></span>
-<span><span class="va">m2_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seroprev_model.html">run_seroprev_model</a></span><span class="op">(</span>seroprev_data <span class="op">=</span> <span class="va">veev2012p</span>,</span>
-<span>                     seroprev_model_name <span class="op">=</span> <span class="st">"continuous_foi_normal_bi"</span>,</span>
+<span><span class="va">m2_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">veev2012p</span>,</span>
+<span>                     seromodel_name <span class="op">=</span> <span class="st">"continuous_foi_normal_bi"</span>,</span>
 <span>                     n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
 <span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "serofoi model continuous_foi_normal_bi finished running ------"</span></span>
-<span><span class="co">#&gt;                     [,1]                      </span></span>
-<span><span class="co">#&gt; seroprev_model_name "continuous_foi_normal_bi"</span></span>
-<span><span class="co">#&gt; dataset             "PAN-2012-VEEV"           </span></span>
-<span><span class="co">#&gt; country             "PAN"                     </span></span>
-<span><span class="co">#&gt; year                "2012"                    </span></span>
-<span><span class="co">#&gt; test                "ELISA"                   </span></span>
-<span><span class="co">#&gt; antibody            "IgG anti-VEEV"           </span></span>
-<span><span class="co">#&gt; n_sample            "146"                     </span></span>
-<span><span class="co">#&gt; n_agec              "17"                      </span></span>
-<span><span class="co">#&gt; n_iter              "500"                     </span></span>
-<span><span class="co">#&gt; elpd                "-28.74"                  </span></span>
-<span><span class="co">#&gt; se                  "7.04"                    </span></span>
-<span><span class="co">#&gt; converged           "Yes"</span></span>
+<span><span class="co">#&gt;                [,1]                      </span></span>
+<span><span class="co">#&gt; seromodel_name "continuous_foi_normal_bi"</span></span>
+<span><span class="co">#&gt; dataset        "PAN-2012-VEEV"           </span></span>
+<span><span class="co">#&gt; country        "PAN"                     </span></span>
+<span><span class="co">#&gt; year           "2012"                    </span></span>
+<span><span class="co">#&gt; test           "ELISA"                   </span></span>
+<span><span class="co">#&gt; antibody       "IgG anti-VEEV"           </span></span>
+<span><span class="co">#&gt; n_sample       "146"                     </span></span>
+<span><span class="co">#&gt; n_agec         "17"                      </span></span>
+<span><span class="co">#&gt; n_iter         "500"                     </span></span>
+<span><span class="co">#&gt; elpd           "-28.74"                  </span></span>
+<span><span class="co">#&gt; se             "7.04"                    </span></span>
+<span><span class="co">#&gt; converged      "Yes"</span></span>
 <span></span>
-<span><span class="va">m3_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seroprev_model.html">run_seroprev_model</a></span><span class="op">(</span>seroprev_data <span class="op">=</span> <span class="va">veev2012p</span>,</span>
-<span>                     seroprev_model_name <span class="op">=</span> <span class="st">"continuous_foi_normal_log"</span>,</span>
+<span><span class="va">m3_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">veev2012p</span>,</span>
+<span>                     seromodel_name <span class="op">=</span> <span class="st">"continuous_foi_normal_log"</span>,</span>
 <span>                     n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
 <span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "serofoi model continuous_foi_normal_log finished running ------"</span></span>
-<span><span class="co">#&gt;                     [,1]                       </span></span>
-<span><span class="co">#&gt; seroprev_model_name "continuous_foi_normal_log"</span></span>
-<span><span class="co">#&gt; dataset             "PAN-2012-VEEV"            </span></span>
-<span><span class="co">#&gt; country             "PAN"                      </span></span>
-<span><span class="co">#&gt; year                "2012"                     </span></span>
-<span><span class="co">#&gt; test                "ELISA"                    </span></span>
-<span><span class="co">#&gt; antibody            "IgG anti-VEEV"            </span></span>
-<span><span class="co">#&gt; n_sample            "146"                      </span></span>
-<span><span class="co">#&gt; n_agec              "17"                       </span></span>
-<span><span class="co">#&gt; n_iter              "500"                      </span></span>
-<span><span class="co">#&gt; elpd                "-22"                      </span></span>
-<span><span class="co">#&gt; se                  "2.99"                     </span></span>
-<span><span class="co">#&gt; converged           "Yes"</span></span></code></pre></div>
+<span><span class="co">#&gt;                [,1]                       </span></span>
+<span><span class="co">#&gt; seromodel_name "continuous_foi_normal_log"</span></span>
+<span><span class="co">#&gt; dataset        "PAN-2012-VEEV"            </span></span>
+<span><span class="co">#&gt; country        "PAN"                      </span></span>
+<span><span class="co">#&gt; year           "2012"                     </span></span>
+<span><span class="co">#&gt; test           "ELISA"                    </span></span>
+<span><span class="co">#&gt; antibody       "IgG anti-VEEV"            </span></span>
+<span><span class="co">#&gt; n_sample       "146"                      </span></span>
+<span><span class="co">#&gt; n_agec         "17"                       </span></span>
+<span><span class="co">#&gt; n_iter         "500"                      </span></span>
+<span><span class="co">#&gt; elpd           "-22"                      </span></span>
+<span><span class="co">#&gt; se             "2.99"                     </span></span>
+<span><span class="co">#&gt; converged      "Yes"</span></span></code></pre></div>
 <p>Now, we can plot the results of the three models to compare. On
 Figure 3, we can observe a large increase in the estimated FOI. As
 suggested in <span class="citation">Carrera et al. (<a href="#ref-Carrera2020" role="doc-biblioref">2020</a>)</span>, an
@@ -345,11 +344,11 @@ inferred. Although the three fitted models converge well, we see much
 larger support for a more sudden increase in recent years with highest
 FoI values at 0.25 (consistent with an epidemic).</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p1_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seroprev_model.html">plot_seroprev_model</a></span><span class="op">(</span><span class="va">m1_veev</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span>
-<span><span class="va">p2_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seroprev_model.html">plot_seroprev_model</a></span><span class="op">(</span><span class="va">m2_veev</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span>
-<span><span class="va">p3_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seroprev_model.html">plot_seroprev_model</a></span><span class="op">(</span><span class="va">m3_veev</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">p1_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m1_veev</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span>
+<span><span class="va">p2_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m2_veev</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span>
+<span><span class="va">p3_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m3_veev</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="../reference/plot_seroprev_models_grid.html">plot_seroprev_models_grid</a></span><span class="op">(</span><span class="va">p1_veev</span>, <span class="va">p2_veev</span>, <span class="va">p3_veev</span>, n_row <span class="op">=</span> <span class="fl">1</span>, n_col <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">plot_grid</a></span><span class="op">(</span><span class="va">p1_veev</span>, <span class="va">p2_veev</span>, <span class="va">p3_veev</span>, nrow <span class="op">=</span> <span class="fl">1</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <p><img src="use_cases_files/figure-html/model_comp_veev-1.png" width="960"></p>
 <p>Figure 3. Results of fitted models, Force-of-Infection estimates and
 convergence.</p>
@@ -364,8 +363,7 @@ household interviews and serologic surveys (measuring IgG antibodies
 against Chikungunya virus) in Bahia, Brazil during October-December
 2015, right after a large CHIKV epidemic that occurred in that area.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">chik2015</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="st">"../data/chik2015.RDS"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"chik2015"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">chik2015</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt;           survey total counts age_min age_max year_init year_end tsur country</span></span>
 <span><span class="co">#&gt; 1 BRA 2015(S019)   144     63      40      59      2015     2015 2015     BRA</span></span>
@@ -379,64 +377,64 @@ against Chikungunya virus) in Bahia, Brazil during October-December
 <span><span class="co">#&gt; 4 ELISA IgG anti-CHIKV Dias et al. 2018</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">chik2015p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_seroprev_data.html">prepare_seroprev_data</a></span><span class="op">(</span><span class="va">chik2015</span><span class="op">)</span></span>
+<span><span class="va">chik2015p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_serodata.html">prepare_serodata</a></span><span class="op">(</span><span class="va">chik2015</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">mod1_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seroprev_model.html">run_seroprev_model</a></span><span class="op">(</span>seroprev_data <span class="op">=</span> <span class="va">chik2015p</span>,</span>
-<span>                     seroprev_model_name <span class="op">=</span> <span class="st">"constant_foi_bi"</span>,</span>
+<span><span class="va">mod1_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chik2015p</span>,</span>
+<span>                     seromodel_name <span class="op">=</span> <span class="st">"constant_foi_bi"</span>,</span>
 <span>                     n_iters <span class="op">=</span> <span class="fl">1000</span>, </span>
 <span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "serofoi model constant_foi_bi finished running ------"</span></span>
-<span><span class="co">#&gt;                     [,1]             </span></span>
-<span><span class="co">#&gt; seroprev_model_name "constant_foi_bi"</span></span>
-<span><span class="co">#&gt; dataset             "BRA 2015(S019)" </span></span>
-<span><span class="co">#&gt; country             "BRA"            </span></span>
-<span><span class="co">#&gt; year                "2015"           </span></span>
-<span><span class="co">#&gt; test                "ELISA"          </span></span>
-<span><span class="co">#&gt; antibody            "IgG anti-CHIKV" </span></span>
-<span><span class="co">#&gt; n_sample            "446"            </span></span>
-<span><span class="co">#&gt; n_agec              "4"              </span></span>
-<span><span class="co">#&gt; n_iter              "1000"           </span></span>
-<span><span class="co">#&gt; elpd                "-39.57"         </span></span>
-<span><span class="co">#&gt; se                  "8.48"           </span></span>
-<span><span class="co">#&gt; converged           "Yes"</span></span>
+<span><span class="co">#&gt;                [,1]             </span></span>
+<span><span class="co">#&gt; seromodel_name "constant_foi_bi"</span></span>
+<span><span class="co">#&gt; dataset        "BRA 2015(S019)" </span></span>
+<span><span class="co">#&gt; country        "BRA"            </span></span>
+<span><span class="co">#&gt; year           "2015"           </span></span>
+<span><span class="co">#&gt; test           "ELISA"          </span></span>
+<span><span class="co">#&gt; antibody       "IgG anti-CHIKV" </span></span>
+<span><span class="co">#&gt; n_sample       "446"            </span></span>
+<span><span class="co">#&gt; n_agec         "4"              </span></span>
+<span><span class="co">#&gt; n_iter         "1000"           </span></span>
+<span><span class="co">#&gt; elpd           "-39.57"         </span></span>
+<span><span class="co">#&gt; se             "8.48"           </span></span>
+<span><span class="co">#&gt; converged      "Yes"</span></span>
 <span></span>
-<span><span class="va">mod2_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seroprev_model.html">run_seroprev_model</a></span><span class="op">(</span>seroprev_data <span class="op">=</span> <span class="va">chik2015p</span>,</span>
-<span>                     seroprev_model_name <span class="op">=</span> <span class="st">"continuous_foi_normal_bi"</span>,</span>
+<span><span class="va">mod2_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chik2015p</span>,</span>
+<span>                     seromodel_name <span class="op">=</span> <span class="st">"continuous_foi_normal_bi"</span>,</span>
 <span>                     n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
 <span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "serofoi model continuous_foi_normal_bi finished running ------"</span></span>
-<span><span class="co">#&gt;                     [,1]                      </span></span>
-<span><span class="co">#&gt; seroprev_model_name "continuous_foi_normal_bi"</span></span>
-<span><span class="co">#&gt; dataset             "BRA 2015(S019)"          </span></span>
-<span><span class="co">#&gt; country             "BRA"                     </span></span>
-<span><span class="co">#&gt; year                "2015"                    </span></span>
-<span><span class="co">#&gt; test                "ELISA"                   </span></span>
-<span><span class="co">#&gt; antibody            "IgG anti-CHIKV"          </span></span>
-<span><span class="co">#&gt; n_sample            "446"                     </span></span>
-<span><span class="co">#&gt; n_agec              "4"                       </span></span>
-<span><span class="co">#&gt; n_iter              "1500"                    </span></span>
-<span><span class="co">#&gt; elpd                "-20.76"                  </span></span>
-<span><span class="co">#&gt; se                  "1.98"                    </span></span>
-<span><span class="co">#&gt; converged           "Yes"</span></span>
+<span><span class="co">#&gt;                [,1]                      </span></span>
+<span><span class="co">#&gt; seromodel_name "continuous_foi_normal_bi"</span></span>
+<span><span class="co">#&gt; dataset        "BRA 2015(S019)"          </span></span>
+<span><span class="co">#&gt; country        "BRA"                     </span></span>
+<span><span class="co">#&gt; year           "2015"                    </span></span>
+<span><span class="co">#&gt; test           "ELISA"                   </span></span>
+<span><span class="co">#&gt; antibody       "IgG anti-CHIKV"          </span></span>
+<span><span class="co">#&gt; n_sample       "446"                     </span></span>
+<span><span class="co">#&gt; n_agec         "4"                       </span></span>
+<span><span class="co">#&gt; n_iter         "1500"                    </span></span>
+<span><span class="co">#&gt; elpd           "-20.76"                  </span></span>
+<span><span class="co">#&gt; se             "1.98"                    </span></span>
+<span><span class="co">#&gt; converged      "Yes"</span></span>
 <span></span>
-<span><span class="va">mod3_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seroprev_model.html">run_seroprev_model</a></span><span class="op">(</span>seroprev_data <span class="op">=</span> <span class="va">chik2015p</span>,</span>
-<span>                     seroprev_model_name <span class="op">=</span> <span class="st">"continuous_foi_normal_log"</span>,</span>
+<span><span class="va">mod3_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chik2015p</span>,</span>
+<span>                     seromodel_name <span class="op">=</span> <span class="st">"continuous_foi_normal_log"</span>,</span>
 <span>                     n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
 <span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "serofoi model continuous_foi_normal_log finished running ------"</span></span>
-<span><span class="co">#&gt;                     [,1]                       </span></span>
-<span><span class="co">#&gt; seroprev_model_name "continuous_foi_normal_log"</span></span>
-<span><span class="co">#&gt; dataset             "BRA 2015(S019)"           </span></span>
-<span><span class="co">#&gt; country             "BRA"                      </span></span>
-<span><span class="co">#&gt; year                "2015"                     </span></span>
-<span><span class="co">#&gt; test                "ELISA"                    </span></span>
-<span><span class="co">#&gt; antibody            "IgG anti-CHIKV"           </span></span>
-<span><span class="co">#&gt; n_sample            "446"                      </span></span>
-<span><span class="co">#&gt; n_agec              "4"                        </span></span>
-<span><span class="co">#&gt; n_iter              "1500"                     </span></span>
-<span><span class="co">#&gt; elpd                "-12.58"                   </span></span>
-<span><span class="co">#&gt; se                  "0.81"                     </span></span>
-<span><span class="co">#&gt; converged           "Yes"</span></span></code></pre></div>
+<span><span class="co">#&gt;                [,1]                       </span></span>
+<span><span class="co">#&gt; seromodel_name "continuous_foi_normal_log"</span></span>
+<span><span class="co">#&gt; dataset        "BRA 2015(S019)"           </span></span>
+<span><span class="co">#&gt; country        "BRA"                      </span></span>
+<span><span class="co">#&gt; year           "2015"                     </span></span>
+<span><span class="co">#&gt; test           "ELISA"                    </span></span>
+<span><span class="co">#&gt; antibody       "IgG anti-CHIKV"           </span></span>
+<span><span class="co">#&gt; n_sample       "446"                      </span></span>
+<span><span class="co">#&gt; n_agec         "4"                        </span></span>
+<span><span class="co">#&gt; n_iter         "1500"                     </span></span>
+<span><span class="co">#&gt; elpd           "-12.58"                   </span></span>
+<span><span class="co">#&gt; se             "0.81"                     </span></span>
+<span><span class="co">#&gt; converged      "Yes"</span></span></code></pre></div>
 <p>In Figure 4, we can observe the comparison between the three serofoi
 models. Here serofoi shows strong statistical support for a sudden
 increase in the transmission of CHIKV close to the year of the
@@ -446,11 +444,11 @@ Despite that, the results are consistent with the empirical evidence
 shown by <span class="citation">(<a href="#ref-dias2018" role="doc-biblioref">Dias et al. 2018</a>)</span> with both interviews,
 and IgM testing.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p1_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seroprev_model.html">plot_seroprev_model</a></span><span class="op">(</span><span class="va">mod1_chik</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.08</span><span class="op">)</span></span>
-<span><span class="va">p2_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seroprev_model.html">plot_seroprev_model</a></span><span class="op">(</span><span class="va">mod2_chik</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.08</span><span class="op">)</span></span>
-<span><span class="va">p3_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seroprev_model.html">plot_seroprev_model</a></span><span class="op">(</span><span class="va">mod3_chik</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.08</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">p1_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">mod1_chik</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.08</span><span class="op">)</span></span>
+<span><span class="va">p2_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">mod2_chik</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.08</span><span class="op">)</span></span>
+<span><span class="va">p3_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">mod3_chik</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.08</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="../reference/plot_seroprev_models_grid.html">plot_seroprev_models_grid</a></span><span class="op">(</span><span class="va">p1_chik</span>, <span class="va">p2_chik</span>, <span class="va">p3_chik</span>, n_row <span class="op">=</span> <span class="fl">1</span>, n_col <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">plot_grid</a></span><span class="op">(</span><span class="va">p1_chik</span>, <span class="va">p2_chik</span>, <span class="va">p3_chik</span>, nrow <span class="op">=</span> <span class="fl">1</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <p><img src="use_cases_files/figure-html/plot_chik-1.png" width="960"></p>
 </div>
 <div class="section level3">
