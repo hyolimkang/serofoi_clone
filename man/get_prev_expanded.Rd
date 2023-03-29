@@ -2,27 +2,29 @@
 % Please edit documentation in R/modelling.R
 \name{get_prev_expanded}
 \alias{get_prev_expanded}
-\title{Get Prevalence Expanded}
+\title{Function that generates an object containing the confidence interval based on a 
+Force-of-Infection fitting performed for a serological survey}
 \usage{
-get_prev_expanded(foi, model_data)
+get_prev_expanded(foi, serodata)
 }
 \arguments{
-\item{foi}{Object containing the information of the force of infection. It is obtained from \code{rstan::extract(model_object$fit, "foi", inc_warmup = FALSE)[[1]]}.}
+\item{foi}{Object containing the information of the force of infection. It is obtained from \code{rstan::extract(seromodel_object$fit, "foi", inc_warmup = FALSE)[[1]]}.}
 
-\item{model_data}{A data frame containing the data from a seroprevalence survey. For further details refer to \link{run_model}.}
+\item{serodata}{A data frame containing the data from a seroprevalence survey. For further details refer to \link{run_seromodel}.}
 }
 \value{
 \code{prev_final}. The expanded prevalence data. This is used for plotting purposes in the \code{visualization} module.
 }
 \description{
-Function that generates the expanded prevalence
+This function computes the corresponding binomial confidence intervals for the obtained prevalence based on a fitting
+of the Force-of-Infection \code{foi} for plotting an analysis purposes.
 }
 \examples{
 \dontrun{
-model_data <- prepare_data(mydata)
-model_object <- run_model(model_data = model_data,
-                          model_name = "constant_foi_bi")
-foi <- rstan::extract(model_object$fit, "foi", inc_warmup = FALSE)[[1]]
-get_prev_expanded <- function(foi, model_data)
+serodata <- prepare_serodata(serodata)
+seromodel_object <- run_seromodel(serodata = serodata,
+                          seromodel_name = "constant_foi_bi")
+foi <- rstan::extract(seromodel_object$fit, "foi")[[1]]
+get_prev_expanded <- function(foi, serodata)
 }
 }

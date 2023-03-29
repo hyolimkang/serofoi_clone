@@ -2,23 +2,23 @@
 % Please edit documentation in R/modelling.R
 \name{get_exposure_matrix}
 \alias{get_exposure_matrix}
-\title{Get Exposure Matrix}
+\title{Function that generates the exposure matrix corresponding to a serological survey}
 \usage{
-get_exposure_matrix(model_data, exposure_years)
+get_exposure_matrix(serodata)
 }
 \arguments{
-\item{model_data}{A data frame containing the data from a seroprevalence survey. This data frame must contain the year of birth for each individual (birth_year) and the time of the survey (tsur). birth_year can be constructed by means of the \link{prepare_data} function.}
+\item{serodata}{A data frame containing the data from a seroprevalence survey. This data frame must contain the year of birth for each individual (birth_year) and the time of the survey (tsur). birth_year can be constructed by means of the \link{prepare_serodata} function.}
 }
 \value{
-\code{exposure_output}. An atomic matrix containing the expositions for each entry of \code{model_data} by year.
+\code{exposure_output}. An atomic matrix containing the expositions for each entry of \code{serodata} by year.
 }
 \description{
-Function that generates the exposure matrix for a seroprevalence survey.
+Function that generates the exposure matrix corresponding to the specified serological survey data \code{serodata}.
 }
 \examples{
 \dontrun{
-model_data <- prepare_data(model_data = mydata, alpha = 0.05)
-exposure_years <- get_exposure_years(model_data)
-exposure_matrix <- get_exposure_matrix(model_data = model_data, exposure_years = exposure_years)
+data("serodata")
+serodata <- prepare_serodata(serodata = serodata)
+exposure_matrix <- get_exposure_matrix(serodata = serodata)
 }
 }
