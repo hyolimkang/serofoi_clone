@@ -123,12 +123,12 @@
 <p>For the <em>endemic model</em> a small number of iterations is enough for achieving convergence, as it only fits one parameter (the constant FoI) from a binomial distribution.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">model_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">data_test</span>,</span>
-<span>                     seromodel_name <span class="op">=</span> <span class="st">"constant_foi_bi"</span>,</span>
+<span>                     foi_model <span class="op">=</span> <span class="st">"constant"</span>,</span>
 <span>                     n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
 <span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "serofoi model constant_foi_bi finished running ------"</span></span>
+<span><span class="co">#&gt; [1] "serofoi model constant finished running ------"</span></span>
 <span><span class="co">#&gt;                     [,1]              </span></span>
-<span><span class="co">#&gt; seromodel_name "constant_foi_bi" </span></span>
+<span><span class="co">#&gt; foi_model "constant" </span></span>
 <span><span class="co">#&gt; dataset             "COL-035-93"      </span></span>
 <span><span class="co">#&gt; country             "COL"             </span></span>
 <span><span class="co">#&gt; year                "2012"            </span></span>
@@ -147,12 +147,12 @@
 <p>For the <em>epidemic model,</em> a larger number of iterations is required for achieving convergence, as it fits yearly FoI values from a binomial distribution. The number of iterations required may depend on the number of years, reflected by the difference between year of the serosurvey and the maximum age-class sampled.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">model_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">data_test</span>,</span>
-<span>                     seromodel_name <span class="op">=</span> <span class="st">"continuous_foi_normal_bi"</span>,</span>
+<span>                     foi_model <span class="op">=</span> <span class="st">"tv_normal"</span>,</span>
 <span>                     n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
 <span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "serofoi model continuous_foi_normal_bi finished running ------"</span></span>
+<span><span class="co">#&gt; [1] "serofoi model tv_normal finished running ------"</span></span>
 <span><span class="co">#&gt;                     [,1]                      </span></span>
-<span><span class="co">#&gt; seromodel_name "continuous_foi_normal_bi"</span></span>
+<span><span class="co">#&gt; foi_model "tv_normal"</span></span>
 <span><span class="co">#&gt; dataset             "COL-035-93"              </span></span>
 <span><span class="co">#&gt; country             "COL"                     </span></span>
 <span><span class="co">#&gt; year                "2012"                    </span></span>
@@ -171,12 +171,12 @@
 <p>For the <em>fast</em> <em>epidemic model,</em> a larger number of iterations is required for achieving convergence, compared to the previous models.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">model_3</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">data_test</span>,</span>
-<span>                     seromodel_name <span class="op">=</span> <span class="st">"continuous_foi_normal_log"</span>,</span>
-<span>                     n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
-<span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "serofoi model continuous_foi_normal_log finished running ------"</span></span>
+<span>                        foi_model <span class="op">=</span> <span class="st">"tv_normal_log"</span>,</span>
+<span>                        n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
+<span>                        n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "serofoi model tv_normal_log finished running ------"</span></span>
 <span><span class="co">#&gt;                     [,1]                       </span></span>
-<span><span class="co">#&gt; seromodel_name "continuous_foi_normal_log"</span></span>
+<span><span class="co">#&gt; foi_model "tv_normal_log"</span></span>
 <span><span class="co">#&gt; dataset             "COL-035-93"               </span></span>
 <span><span class="co">#&gt; country             "COL"                      </span></span>
 <span><span class="co">#&gt; year                "2012"                     </span></span>
