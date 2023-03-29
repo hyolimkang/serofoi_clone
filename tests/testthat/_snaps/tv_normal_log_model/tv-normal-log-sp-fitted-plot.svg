@@ -134,6 +134,6 @@
 <text x='682.63' y='548.86' text-anchor='middle' style='font-size: 12.00px; fill: #4D4D4D; font-family: sans;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>60</text>
 <text x='383.63' y='565.41' text-anchor='middle' style='font-size: 15.00px; font-family: sans;' textLength='26.69px' lengthAdjust='spacingAndGlyphs'>Age</text>
 <text transform='translate(17.79,282.47) rotate(-90)' text-anchor='middle' style='font-size: 15.00px; font-family: sans;' textLength='94.21px' lengthAdjust='spacingAndGlyphs'>Sero-positivity</text>
-<text x='54.73' y='19.86' style='font-size: 18.00px; font-family: sans;' textLength='243.17px' lengthAdjust='spacingAndGlyphs'>seroprev_fitted_individual_plot</text>
+<text x='54.73' y='19.86' style='font-size: 18.00px; font-family: sans;' textLength='230.17px' lengthAdjust='spacingAndGlyphs'>tv_normal_log_sp_fitted_plot</text>
 </g>
 </svg>

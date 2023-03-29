@@ -2,16 +2,16 @@
 % Please edit documentation in R/modelling.R
 \name{save_or_load_model}
 \alias{save_or_load_model}
-\title{Save or load model}
+\title{Function used to determine whether the stan model corresponding to the specified serological model has been already compiled or not}
 \usage{
-save_or_load_model(seroprev_model_name = "constant_foi_bi")
+save_or_load_model(foi_model = "constant")
 }
 \arguments{
-\item{seroprev_model_name}{Name of the selected model. Current version provides three options:
+\item{foi_model}{Name of the selected model. Current version provides three options:
 \describe{
-\item{\code{"constant_foi_bi"}}{Runs a constant model}
-\item{\code{"continuous_foi_normal_bi"}}{Runs a normal model}
-\item{\code{"continuous_foi_normal_log"}}{Runs a normal logarithmic model}
+\item{\code{"constant"}}{Runs a constant model}
+\item{\code{"tv_normal"}}{Runs a normal model}
+\item{\code{"tv_normal_log"}}{Runs a normal logarithmic model}
 }}
 }
 \value{
@@ -23,5 +23,8 @@ In case the .RDS file exists, it is read and returned; otherwise, the object mod
 \link[rstan]{stan_model} function, saved as an .RDS file and returned as the output of the function.
 }
 \examples{
-save_or_load_model(seroprev_model_name="constant_foi_bi")
+\dontrun{
+model <- save_or_load_model(foi_model="constant")
+}
+
 }
