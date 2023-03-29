@@ -58,7 +58,8 @@ Imports:
     RcppEigen,
     RcppParallel,
     purrr,
-    cowplot
+    cowplot,
+    pracma
 Suggests: 
     knitr,
     rmarkdown
