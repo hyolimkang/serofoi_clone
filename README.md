@@ -150,11 +150,11 @@ For the *fast* *epidemic model,* a larger number of iterations is
 required for achieving convergence, compared to the previous models.
 
 ``` r
-model_3 <- run_seroprev_model(seroprev_data = data_test,
-                     seroprev_model_name = "continuous_foi_normal_log",
-                     n_iters = 1500, 
-                     n_thin = 2)
-#> [1] "serofoi model continuous_foi_normal_log finished running ------"
+model_3 <- run_seromodel(serodata = data_test,
+                        foi_model = "tv_normal_log",
+                        n_iters = 1500, 
+                        n_thin = 2)
+#> [1] "serofoi model tv_normal_log finished running ------"
 #>                     [,1]                       
 #> seroprev_model_name "continuous_foi_normal_log"
 #> dataset             "COL-035-93"               
