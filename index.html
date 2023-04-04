@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">serofoi</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.9</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +44,7 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/simulated_data.html">Simulated data</a>
+    <a class="dropdown-item" href="articles/foi_models.html">FoI Models</a>
     <a class="dropdown-item" href="articles/use_cases.html">Use cases</a>
   </div>
 </li>
@@ -67,131 +67,37 @@
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p><strong><em>serofoi</em></strong> is an R package to estimates the <em>Force-of-Infection</em> of a given pathogen from age-disaggregated population based sero-prevalence studies, using a Bayesian framework.</p>
-<p><strong><em>serofoi</em></strong> implements methods outlined in (Cucunubá et al. <a href="#ref-cucunub%C3%A12017">2017</a>) and (Carrera et al. <a href="#ref-carrera2020">2020</a>)</p>
-<p><strong><em>serofoi</em></strong> relies on <a href="https://mc-stan.org/users/interfaces/rstan" class="external-link"><code>rstan</code></a></p>
+<p><strong><em>serofoi</em></strong> is an R package to estimate the <em>Force-of-Infection (FoI)</em> of a given pathogen from age-disaggregated population-based cross-sectional serosurveys, using a Bayesian framework. The package provides a set of features for assessing model fitting, convergence and visualisation.</p>
+<p><strong><em>serofoi</em></strong> relies on the <a href="https://mc-stan.org/users/interfaces/rstan" class="external-link"><code>rstan</code></a> package, which provides an R interface for the Stan programming language for statistical Bayesian modelling. Particularly, <strong><em>serofoi</em></strong> relies on the use of a <em>Hamiltonian Monte Carlo (HCM)</em> algorithm implemented by <em>Stan for Markov chain Monte Carlo (MCMC)</em> sampling. The implemented methods are outlined in (<a href="#ref-cucunub%C3%A12017">Cucunubá et al. 2017</a>) and (<a href="#ref-carrera2020">Carrera et al. 2020</a>) (see <a href="https://trace-lac.github.io/serofoi/articles/foi_models.html" class="external-link">FoI Models</a> for further details)</p>
 <p><strong><em>serofoi</em></strong> is part of the <a href="https://data.org/initiatives/epiverse/" class="external-link">Epiverse Initiative</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the <strong>development version</strong> of <code>serofoi</code> from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<p>You can install the <strong>development version</strong> of <strong><em>serofoi</em></strong> from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="co"># remotes::install_github("TRACE-LAC/serofoi")</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://trace-lac.github.io/serofoi/">serofoi</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"TRACE-LAC/serofoi"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
-<p>The package provides an example dataset of the observed serosurvey data, <code>serodata</code>. This example is the basic entry for the package.</p>
+<p><strong><em>serofoi</em></strong> provides a minimal serosurvey dataset, <code>serodata</code>, that can be used to test out the package.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="co"># Load example serodata data included with the package</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">serodata</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># Load example serodata data included with the package</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"serodata"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">serodata</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       survey total counts age_min age_max year_init year_end tsur country  test</span></span>
-<span><span class="co">#&gt; 1 COL-035-93    34      0       1       1      2012     2012 2012     COL ELISA</span></span>
-<span><span class="co">#&gt; 2 COL-035-93    25      0       2       2      2012     2012 2012     COL ELISA</span></span>
-<span><span class="co">#&gt; 3 COL-035-93    35      1       3       3      2012     2012 2012     COL ELISA</span></span>
-<span><span class="co">#&gt; 4 COL-035-93    29      0       4       4      2012     2012 2012     COL ELISA</span></span>
-<span><span class="co">#&gt; 5 COL-035-93    36      0       5       5      2012     2012 2012     COL ELISA</span></span>
-<span><span class="co">#&gt;           antibody</span></span>
-<span><span class="co">#&gt; 1 IgG anti-T.cruzi</span></span>
-<span><span class="co">#&gt; 2 IgG anti-T.cruzi</span></span>
-<span><span class="co">#&gt; 3 IgG anti-T.cruzi</span></span>
-<span><span class="co">#&gt; 4 IgG anti-T.cruzi</span></span>
-<span><span class="co">#&gt; 5 IgG anti-T.cruzi</span></span></code></pre></div>
-<p>The function <code>prepare_serodata</code> will prepare the entry data for entering the modelling functions. The seroprevalence <em>prepared data</em> can be visualised with the <code>plot_seroprev</code> function. This function also plots the binomial confidence interval of the observed data.</p>
+<span><span class="co">#&gt;       survey total counts age_min age_max tsur country  test         antibody</span></span>
+<span><span class="co">#&gt; 1 COL-035-93    34      0       1       1 2012     COL ELISA IgG anti-T.cruzi</span></span>
+<span><span class="co">#&gt; 2 COL-035-93    25      0       2       2 2012     COL ELISA IgG anti-T.cruzi</span></span>
+<span><span class="co">#&gt; 3 COL-035-93    35      1       3       3 2012     COL ELISA IgG anti-T.cruzi</span></span>
+<span><span class="co">#&gt; 4 COL-035-93    29      0       4       4 2012     COL ELISA IgG anti-T.cruzi</span></span>
+<span><span class="co">#&gt; 5 COL-035-93    36      0       5       5 2012     COL ELISA IgG anti-T.cruzi</span></span></code></pre></div>
+<p>The function <code>prepare_serodata</code> will prepare the entry data for the use of the modelling module; this function computes the sample size, the years of birth and the binomial confidence interval for each age group in the provided dataset. A visualisation of the prepared seroprevalence data can be obtained using the function plot_seroprev:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">data_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/prepare_serodata.html">prepare_serodata</a></span><span class="op">(</span><span class="va">serodata</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/plot_seroprev.html">plot_seroprev</a></span><span class="op">(</span><span class="va">data_test</span>, size_text <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-data_test-1.png" width="100%"></p>
-<div class="section level4">
-<h4 id="current-version-of-the-package-runs-three-different-foi-models">Current version of the package runs <strong><em>three</em></strong> different FoI models<a class="anchor" aria-label="anchor" href="#current-version-of-the-package-runs-three-different-foi-models"></a>
-</h4>
-<p>The <code>run_seromodel</code> function allows specifying the Bayesian model from <em>R</em>, while running in the back from <code>rstan</code>. The number of iterations, thinning, and other parameters can be customised.</p>
-<div class="alert alert-primary">
-<p>NOTE: Running the <em>serofoi</em> models for the first time on your local computer make take a few minutes while the <em>rstan</em> code is compiled locally. Afterwards, no further local compilation is needed.</p>
-</div>
-</div>
-<div class="section level4">
-<h4 id="model-1-constant-force-of-infection-endemic-model">Model 1. Constant Force-of-Infection (endemic model)<a class="anchor" aria-label="anchor" href="#model-1-constant-force-of-infection-endemic-model"></a>
-</h4>
-<p>For the <em>endemic model</em> a small number of iterations is enough for achieving convergence, as it only fits one parameter (the constant FoI) from a binomial distribution.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">model_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">data_test</span>,</span>
-<span>                     foi_model <span class="op">=</span> <span class="st">"constant"</span>,</span>
-<span>                     n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
-<span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "serofoi model constant finished running ------"</span></span>
-<span><span class="co">#&gt;                     [,1]              </span></span>
-<span><span class="co">#&gt; foi_model "constant" </span></span>
-<span><span class="co">#&gt; dataset             "COL-035-93"      </span></span>
-<span><span class="co">#&gt; country             "COL"             </span></span>
-<span><span class="co">#&gt; year                "2012"            </span></span>
-<span><span class="co">#&gt; test                "ELISA"           </span></span>
-<span><span class="co">#&gt; antibody            "IgG anti-T.cruzi"</span></span>
-<span><span class="co">#&gt; n_sample            "747"             </span></span>
-<span><span class="co">#&gt; n_agec              "72"              </span></span>
-<span><span class="co">#&gt; n_iter              "500"             </span></span>
-<span><span class="co">#&gt; elpd                "-92.88"          </span></span>
-<span><span class="co">#&gt; se                  "6.44"            </span></span>
-<span><span class="co">#&gt; converged           "Yes"</span></span></code></pre></div>
-</div>
-<div class="section level4">
-<h4 id="model-2-time-varying-force-of-infection-epidemic-model">Model 2. Time-varying Force-of-Infection (epidemic model)<a class="anchor" aria-label="anchor" href="#model-2-time-varying-force-of-infection-epidemic-model"></a>
-</h4>
-<p>For the <em>epidemic model,</em> a larger number of iterations is required for achieving convergence, as it fits yearly FoI values from a binomial distribution. The number of iterations required may depend on the number of years, reflected by the difference between year of the serosurvey and the maximum age-class sampled.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">model_2</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">data_test</span>,</span>
-<span>                     foi_model <span class="op">=</span> <span class="st">"tv_normal"</span>,</span>
-<span>                     n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
-<span>                     n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "serofoi model tv_normal finished running ------"</span></span>
-<span><span class="co">#&gt;                     [,1]                      </span></span>
-<span><span class="co">#&gt; foi_model "tv_normal"</span></span>
-<span><span class="co">#&gt; dataset             "COL-035-93"              </span></span>
-<span><span class="co">#&gt; country             "COL"                     </span></span>
-<span><span class="co">#&gt; year                "2012"                    </span></span>
-<span><span class="co">#&gt; test                "ELISA"                   </span></span>
-<span><span class="co">#&gt; antibody            "IgG anti-T.cruzi"        </span></span>
-<span><span class="co">#&gt; n_sample            "747"                     </span></span>
-<span><span class="co">#&gt; n_agec              "72"                      </span></span>
-<span><span class="co">#&gt; n_iter              "1500"                    </span></span>
-<span><span class="co">#&gt; elpd                "-74.69"                  </span></span>
-<span><span class="co">#&gt; se                  "5.83"                    </span></span>
-<span><span class="co">#&gt; converged           "Yes"</span></span></code></pre></div>
-</div>
-<div class="section level4">
-<h4 id="model-3-time-varying-force-of-infection-fast-epidemic-model">Model 3. Time-varying Force-of-Infection (fast epidemic model)<a class="anchor" aria-label="anchor" href="#model-3-time-varying-force-of-infection-fast-epidemic-model"></a>
-</h4>
-<p>For the <em>fast</em> <em>epidemic model,</em> a larger number of iterations is required for achieving convergence, compared to the previous models.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">model_3</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">data_test</span>,</span>
-<span>                        foi_model <span class="op">=</span> <span class="st">"tv_normal_log"</span>,</span>
-<span>                        n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
-<span>                        n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "serofoi model tv_normal_log finished running ------"</span></span>
-<span><span class="co">#&gt;                     [,1]                       </span></span>
-<span><span class="co">#&gt; foi_model "tv_normal_log"</span></span>
-<span><span class="co">#&gt; dataset             "COL-035-93"               </span></span>
-<span><span class="co">#&gt; country             "COL"                      </span></span>
-<span><span class="co">#&gt; year                "2012"                     </span></span>
-<span><span class="co">#&gt; test                "ELISA"                    </span></span>
-<span><span class="co">#&gt; antibody            "IgG anti-T.cruzi"         </span></span>
-<span><span class="co">#&gt; n_sample            "747"                      </span></span>
-<span><span class="co">#&gt; n_agec              "72"                       </span></span>
-<span><span class="co">#&gt; n_iter              "1500"                     </span></span>
-<span><span class="co">#&gt; elpd                "-72.22"                   </span></span>
-<span><span class="co">#&gt; se                  "7.15"                     </span></span>
-<span><span class="co">#&gt; converged           "Yes"</span></span></code></pre></div>
-<p>For each model, the plot_seroprev_model function generate a vertical arrange of plots summarising the results of the model implementation plotting functions. Crucially, it shows the (expected) log-predictive density <code>elpd</code>, standard error <code>se</code>, and allows to check convergence based on <code>R-hat</code> convergence diagnostics.</p>
-<p>Also, by means of the function <code><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">cowplot::plot_grid</a></code> a comparison of the models based on the (expected) log-predictive density <code>elpd</code>, standard error <code>se</code>, and allows to check convergence based on <code>R-hat</code> convergence diagnostics can be visualized.</p>
-<p>For more detailed information and examples, please check the <a href="https://epiverse-trace.github.io/serofoi/articles" class="external-link">online documentation</a> as package vignettes under Get Started.</p>
-</div>
+<code class="sourceCode R"><span><span class="va">serodata_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/prepare_serodata.html">prepare_serodata</a></span><span class="op">(</span><span class="va">serodata</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot_seroprev.html">plot_seroprev</a></span><span class="op">(</span><span class="va">serodata_test</span>, size_text <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-data_test-1.png" width="50%" style="display: block; margin: auto;"></p>
 <div class="section level3">
 <h3 id="contributions">Contributions<a class="anchor" aria-label="anchor" href="#contributions"></a>
 </h3>
@@ -210,12 +116,12 @@
 <div class="section level2">
 <h2 id="package-vignettes">Package vignettes<a class="anchor" aria-label="anchor" href="#package-vignettes"></a>
 </h2>
-<p>More details on how to use <strong><em>serofoi</em></strong> can be found in the <a href="https://epiverse-trace.github.io/serofoi/" class="external-link">online documentation as package vignettes</a>, under “Get Started”.</p>
+<p>More details on how to use <strong><em>serofoi</em></strong> can be found in the <a href="https://epiverse-trace.github.io/serofoi/" class="external-link">online documentation</a> as package vignettes, under <a href="https://trace-lac.github.io/serofoi/articles/serofoi.html" class="external-link"><strong>Get Started</strong></a>, <a href="https://trace-lac.github.io/serofoi/articles/foi_models.html" class="external-link"><strong>FoI Models</strong></a> and <a href="https://trace-lac.github.io/serofoi/articles/use_cases.html" class="external-link"><strong>Use Cases</strong></a></p>
 </div>
 <div class="section level2">
 <h2 id="help">Help<a class="anchor" aria-label="anchor" href="#help"></a>
 </h2>
-<p>To report a bug please open an <a href="https://github.com/epiverse-trace/serofoi/issues/new/choose" class="external-link">issue</a>.</p>
+<p>To report a bug please open an <a href="https://github.com/TRACE-LAC/serofoi/issues" class="external-link">issue</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="contribute">Contribute<a class="anchor" aria-label="anchor" href="#contribute"></a>
@@ -230,12 +136,12 @@
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references hanging-indent">
-<div id="ref-carrera2020">
-<p>Carrera, Jean-Paul, Zulma M. Cucunubá, Karen Neira, Ben Lambert, Yaneth Pittí, Jesus Liscano, Jorge L. Garzón, et al. 2020. “Endemic and Epidemic Human Alphavirus Infections in Eastern Panama: An Analysis of Population-Based Cross-Sectional Surveys.” <em>The American Journal of Tropical Medicine and Hygiene</em> 103 (6): 2429–37. <a href="https://doi.org/10.4269/ajtmh.20-0408" class="external-link uri">https://doi.org/10.4269/ajtmh.20-0408</a>.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-carrera2020" class="csl-entry">
+Carrera, Jean-Paul, Zulma M. Cucunubá, Karen Neira, Ben Lambert, Yaneth Pittí, Jesus Liscano, Jorge L. Garzón, et al. 2020. “Endemic and Epidemic Human Alphavirus Infections in Eastern Panama: An Analysis of Population-Based Cross-Sectional Surveys.” <em>The American Journal of Tropical Medicine and Hygiene</em> 103 (6): 2429–37. <a href="https://doi.org/10.4269/ajtmh.20-0408" class="external-link uri">https://doi.org/10.4269/ajtmh.20-0408</a>.
 </div>
-<div id="ref-cucunubá2017">
-<p>Cucunubá, Zulma M, Pierre Nouvellet, Lesong Conteh, Mauricio Javier Vera, Victor Manuel Angulo, Juan Carlos Dib, Gabriel Jaime Parra -Henao, and María Gloria Basáñez. 2017. “Modelling Historical Changes in the Force-of-Infection of Chagas Disease to Inform Control and Elimination Programmes: Application in Colombia.” <em>BMJ Global Health</em> 2 (3): e000345. <a href="https://doi.org/10.1136/bmjgh-2017-000345" class="external-link uri">https://doi.org/10.1136/bmjgh-2017-000345</a>.</p>
+<div id="ref-cucunubá2017" class="csl-entry">
+Cucunubá, Zulma M, Pierre Nouvellet, Lesong Conteh, Mauricio Javier Vera, Victor Manuel Angulo, Juan Carlos Dib, Gabriel Jaime Parra -Henao, and María Gloria Basáñez. 2017. “Modelling Historical Changes in the Force-of-Infection of Chagas Disease to Inform Control and Elimination Programmes: Application in Colombia.” <em>BMJ Global Health</em> 2 (3): e000345. <a href="https://doi.org/10.1136/bmjgh-2017-000345" class="external-link uri">https://doi.org/10.1136/bmjgh-2017-000345</a>.
 </div>
 </div>
 </div>

@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">serofoi</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.9</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +44,7 @@
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/simulated_data.html">Simulated data</a>
+    <a class="dropdown-item" href="../articles/foi_models.html">FoI Models</a>
     <a class="dropdown-item" href="../articles/use_cases.html">Use cases</a>
   </div>
 </li>
@@ -74,410 +74,261 @@
 
     
     
-<div class="section level2">
-<h2 id="epidemiological-scenarios-for-the-serofoi-models">Epidemiological scenarios for the <em>serofoi</em> models<a class="anchor" aria-label="anchor" href="#epidemiological-scenarios-for-the-serofoi-models"></a>
-</h2>
-<p><strong>serofoi</strong> is an R package that allows estimations of
-the Force-of-Infection from a population based serosurvey data.</p>
-<div class="section level3">
-<h3 id="sero-survey-data">
-<strong>Sero-survey data</strong><a class="anchor" aria-label="anchor" href="#sero-survey-data"></a>
-</h3>
-<p>Surveys had to meet all of the following <u>inclusion
-criteria</u>:</p>
+<p>The serofoi package is a tool for estimating the
+<em>Force-of-Infection (FoI)</em> from population-based serosurvey data.
+In this article, we present three real-life epidemiological scenarios
+from Latin America to demonstrate the utility of
+<strong><em>serofoi</em></strong> and time-varying models in describing
+the trajectory of the <em>FoI</em>. For inclusion criteria about
+serosurvey data and model assumptions, please check <a href="https://trace-lac.github.io/serofoi/articles/serofoi.html" class="external-link"><strong>Get
+Started</strong></a>.</p>
+<p>The scenarios were chosen to showcase the versatility of the serofoi
+package in different epidemiological contexts:</p>
 <ol style="list-style-type: decimal">
-<li><p>Be population-based (not hospital based)</p></li>
-<li><p>Specify individuals’ age or age group</p></li>
-<li><p>Indicate diagnostic test(s) used. The current version of serofoi
-only applies to <em>IgG</em> antibodies)</p></li>
-<li><p>Identify the location and date (year) of sample
-collection</p></li>
+<li>The first scenario presents the rapid spread of chikungunya virus in
+one of the first states of Brazil to report cases of the disease.</li>
+<li>The second scenario describes a hidden VEEV emerging transmission in
+a remote rural area of Eastern Panama.</li>
+<li>The third scenario involves an endemic downtrend of Chagas disease
+transmission in a rural endemic area of Colombia.</li>
 </ol>
+<div class="section level2">
+<h2 id="case-study-1-chikungunya-a-fast-spreading-epidemic-scenario">Case study 1: Chikungunya (a fast-spreading epidemic scenario)<a class="anchor" aria-label="anchor" href="#case-study-1-chikungunya-a-fast-spreading-epidemic-scenario"></a>
+</h2>
+<div class="section level3 unnumbered alert alert-secondary">
+<h3 class="unnumbered" id="the-challenge">The challenge:<a class="anchor" aria-label="anchor" href="#the-challenge"></a>
+</h3>
+<p>Chikungunya is a viral disease that was first described during an
+outbreak in Tanzania in 1952. For several decades, it was primarily
+found in Africa and Asia. However, in 2004, the first Chikungunya
+outbreak outside of these regions occurred on the island of Réunion in
+the Indian Ocean. Since then, Chikungunya has spread rapidly throughout
+the world, including to the Americas, Europe, and the Pacific region. In
+2013, the first cases of Chikungunya were reported in the Americas, and
+the virus has since become endemic in several countries in Latin
+America. The transmission of Chikungunya is primarily through the bites
+of infected Aedes mosquitoes, with humans serving as the primary
+amplifying host. The symptoms of Chikungunya include fever, joint pain,
+headache, muscle pain, and rash, and the disease can range from mild to
+severe. Although Chikungunya is not typically fatal, it can cause
+significant morbidity and has the potential to cause large-scale
+outbreaks, making it an important public health concern. The
+methodological challenge is how best to estimate the disease burden
+untangling the endemic and epidemic patterns in several locations around
+the world. Here <strong><em>serofoi</em></strong> can assist with these
+estimates.</p>
 </div>
 <div class="section level3">
-<h3 id="model-assumptions">Model assumptions<a class="anchor" aria-label="anchor" href="#model-assumptions"></a>
+<h3 id="the-dataset">The dataset:<a class="anchor" aria-label="anchor" href="#the-dataset"></a>
 </h3>
-<p>Current version of <strong>serofoi</strong> includes the following
-assumptions on the underlying biological process:</p>
-<ul>
-<li><p>The Force-of-infection (FoI) is estimated using a catalytic
-model</p></li>
-<li><p>There is no sero-reversion (from positive to negative). It means
-IgG antibodies are life-long duration with no waning immunity. This may
-not be the case for several pathogens. This feature is planned for
-future versions of <em>serofoi</em><strong>.</strong></p></li>
-<li><p>There is no age-dependency. This may not be the case for several
-pathogens. This feature is planned for future versions of
-<em>serofoi</em><strong>.</strong></p></li>
-<li><p>There is no impact from migration processes in the sampled
-population</p></li>
-<li><p>There are no differences in the mortality rate of infected versus
-susceptible individuals</p></li>
-</ul>
-<div class="alert alert-primary">
-<p>NOTE: Running the <em>serofoi</em> models for the first time on your
-local computer make take a few minutes while the <em>rstan</em> code is
-compiled locally. Afterwards, no further local compilation is
-needed.</p>
+<p>To gain insights into the transmission dynamics of Chikungunya in the
+Americas, we used a dataset from a population-based study conducted in
+Bahia, Brazil in October-December 2015. This study, conducted by Dias et
+al. (2018), involved household interviews and age-disaggregated
+serologic surveys to measure IgG antibodies against the Chikungunya
+virus. The survey was conducted immediately after a large Chikungunya
+epidemic in the area.</p>
 </div>
+<div class="section level3">
+<h3 id="the-results">The results:<a class="anchor" aria-label="anchor" href="#the-results"></a>
+</h3>
+<p>serofoi was used to compare three potential scenarios of Chikungunya
+transmission: constant endemic, epidemic slow, and epidemic fast. Figure
+3 displays the comparison between the three serofoi models. The results
+reveal strong statistical support for model 3 (fast epidemic model)
+suggesting a sudden increase in the transmission of Chikungunya close to
+the year of the serosurvey (2015). The exact year is difficult to
+estimate due to the large level of aggregation of the data, which is
+divided into 20-year age groups. Nevertheless, these results are
+consistent with the empirical evidence from Dias et al. (2018), who used
+both interviews and IgM testing to show a similar increase in
+transmission during this period.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Load and prepare data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"chik2015"</span><span class="op">)</span></span>
+<span><span class="va">chik2015p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_serodata.html">prepare_serodata</a></span><span class="op">(</span><span class="va">chik2015</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Implementation of the models</span></span>
+<span><span class="va">m1_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chik2015p</span>,</span>
+<span>                         foi_model <span class="op">=</span> <span class="st">"constant"</span>,</span>
+<span>                         n_iters <span class="op">=</span> <span class="fl">1000</span>,</span>
+<span>                         n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">m2_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chik2015p</span>,</span>
+<span>                         foi_model <span class="op">=</span> <span class="st">"tv_normal"</span>,</span>
+<span>                         n_iters <span class="op">=</span> <span class="fl">1500</span>,</span>
+<span>                         n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">m3_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chik2015p</span>,</span>
+<span>                         foi_model <span class="op">=</span> <span class="st">"tv_normal_log"</span>,</span>
+<span>                         n_iters <span class="op">=</span> <span class="fl">1500</span>,</span>
+<span>                         n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Visualisation of the results</span></span>
+<span><span class="va">p1_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m1_chik</span>, size_text <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="va">p2_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m2_chik</span>, size_text <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="va">p3_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m3_chik</span>, size_text <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">plot_grid</a></span><span class="op">(</span><span class="va">p1_chik</span>, <span class="va">p2_chik</span>, <span class="va">p3_chik</span>, ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<p><img src="use_cases_files/figure-html/chik_fast-1.png" width="480" style="display: block; margin: auto;">
+Figure 1. Serofoi models for FoI estimates of Chikungunya virus
+transmission in an urban remote area of Brazil.</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="constant-vs-time-varying-foi-models">
-<strong>Constant vs Time-varying</strong> FoI models<a class="anchor" aria-label="anchor" href="#constant-vs-time-varying-foi-models"></a>
+<h2 id="case-study-2--hidden-alphaviruses-epidemics-in-panama">Case study 2. Hidden Alphaviruses epidemics in Panama<a class="anchor" aria-label="anchor" href="#case-study-2--hidden-alphaviruses-epidemics-in-panama"></a>
 </h2>
-<div class="section level3">
-<h3 id="constant-force-of-infection-endemic-model">Constant Force-of-Infection (endemic model)<a class="anchor" aria-label="anchor" href="#constant-force-of-infection-endemic-model"></a>
+<div class="section level3 unnumbered alert alert-secondary">
+<h3 class="unnumbered" id="the-challenge-1">The challenge:<a class="anchor" aria-label="anchor" href="#the-challenge-1"></a>
 </h3>
-<p>For <em>constant</em> <em>endemic model</em>, the rate of infection
-acquisition―rate of seroconversion―is constant over time, and infection
-(sero)prevalence will increase monotonically with age as cumulative
-exposure increases.</p>
-<p>Denoting <span class="math inline">\(n(a,t)\)</span> the number of
-seropositive individuals of age <span class="math inline">\(a\)</span>
-at time <span class="math inline">\(t\)</span> , <span class="math inline">\(N\)</span> the serosurvey sample size, and <span class="math inline">\(P(a,t)\)</span> the underlying seroprevalence at
-age <span class="math inline">\(a\)</span> at time <span class="math inline">\(t\)</span>, we assumed that the number of
-seropositive subjects follows a Binomial distribution <span class="math inline">\(n(a,t)\)</span> ~ <span class="math inline">\(B(N,P(a,t))\)</span>.</p>
-<p>For the force-of-infection (FoI) that is constant over time, denoted
-<span class="math inline">\(\lambda\)</span>, we modelled seroprevalence
-for age <span class="math inline">\(a\)</span> in year <span class="math inline">\(t\)</span> (i.e. the time when the serosurvey
-occurred) as:</p>
-<p><span class="math display">\[ P(a,t) =
-1−exp(−\lambda{a})\]</span></p>
-<p>The corresponding code for the constant-FoI model with binomial
-distribution is:</p>
+<p>emerging alphaviruses, including <em>Venezuelan Equine Encephalitis
+Virus (VEEV)</em>, are RNA viruses that can cause disease in both humans
+and animals. They are primarily transmitted by mosquitoes and have a
+complex transmission cycle that involves human and non-human hosts,
+including birds and mammals. Alphaviruses can cause significant
+morbidity and mortality. Hidden epidemics and endemic transmission of
+alphaviruses have been occurring in small and remote communities of
+Eastern Panama for decades without major notice <span class="citation">(<a href="#ref-carrera2020" role="doc-biblioref"><strong>carrera2020?</strong></a>)</span>. The main
+concern with alphaviruses is their potential to spill over into human
+populations and reach highly populated cities and urban areas where
+humans are more susceptible. The Darien province in Eastern Panama,
+bordering the north of Colombia to the south and the Pacific Ocean, is
+home to several indigenous communities who live in traditional and
+remote villages. Notably, the area is also a critical crossing point for
+illegal immigration from Africa and South America to the north of the
+Americas. Estimating the temporal trends of the incidence of
+alphaviruses in this region is a methodological challenge but critical
+to inform control strategies. <strong><em>serofoi</em></strong> can
+assist with these estimations.</p>
 </div>
 <div class="section level3">
-<h3 id="time-varying-force-of-infection">Time-varying Force-of-Infection<a class="anchor" aria-label="anchor" href="#time-varying-force-of-infection"></a>
+<h3 id="the-dataset-1">The dataset:<a class="anchor" aria-label="anchor" href="#the-dataset-1"></a>
 </h3>
-<p>For the time-varying FoI model, the FoI values are estimated from a
-binomial distribution. The sero-prevalence as age a can be expressed
-as:</p>
-<p><span class="math display">\[
-𝑃(𝑎,𝑡)=1−exp(−∑_{i=t-a+1}^{t}𝜆{i})
-\]</span></p>
-<p>Therefore, a serosurvey completed at time <span class="math inline">\(t\)</span> and including ages <span class="math inline">\(a\)</span> from {<span class="math inline">\(age_{min}, age_{max}\)</span>} is informative on
-exposure (and FoI) between {<span class="math inline">\(t,
-age_{max}\)</span>} and <span class="math inline">\(t\)</span>.</p>
-<p>Currently, two models within <em>serofoi</em> allow time-varying FoI,
-with corresponding code:</p>
+<p>From <span class="citation">(<a href="#ref-carrera2020" role="doc-biblioref"><strong>carrera2020?</strong></a>)</span>, we use a
+dataset measuring IgG antibodies against <em>VEEV</em> in a rural
+village in Panamá in 2012. <em>VEEV</em> is primarily transmitted by
+mosquitoes and can cause disease in horses and humans. This dataset,
+<code>veev2012</code> is included in
+<strong><em>serofoi</em></strong>.</p>
 </div>
 <div class="section level3">
-<h3 id="fitting-process">Fitting process<a class="anchor" aria-label="anchor" href="#fitting-process"></a>
+<h3 id="the-result">The result:<a class="anchor" aria-label="anchor" href="#the-result"></a>
 </h3>
-<p>Models are implemented in <strong>RStan</strong> using the No-U-Turn
-sampler, a type of Hamiltonian Monte Carlo sampling. After convergence,
-the best-fitting models can be selected based on the expected log
-predictive density for an out-of-sample data point (elpd).</p>
-</div>
-<div class="section level3">
-<h3 id="case-study-1--chagas-disease-endemic-disease">Case study 1. Chagas disease (endemic disease)<a class="anchor" aria-label="anchor" href="#case-study-1--chagas-disease-endemic-disease"></a>
-</h3>
-<p>Based on the data and analysis shown in <span class="citation">(<a href="#ref-Cucunub%C3%A12017" role="doc-biblioref">Cucunubá et al.
-2017</a>)</span>, we use one of the datasets for measuring the
-sero-prevalence of IgG antibodies against <em>Trypanosoma cruzi</em>
-infection in rural area of Colombia in 2012. The dataset is part of the
-serofoi package as <code>chagas2012</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"chagas2012"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">chagas2012</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="co">#&gt;       survey total counts age_min age_max year_init year_end tsur country  test</span></span>
-<span><span class="co">#&gt; 1 COL-035-93    34      0       1       1      2012     2012 2012     COL ELISA</span></span>
-<span><span class="co">#&gt; 2 COL-035-93    25      0       2       2      2012     2012 2012     COL ELISA</span></span>
-<span><span class="co">#&gt; 3 COL-035-93    35      1       3       3      2012     2012 2012     COL ELISA</span></span>
-<span><span class="co">#&gt; 4 COL-035-93    29      0       4       4      2012     2012 2012     COL ELISA</span></span>
-<span><span class="co">#&gt; 5 COL-035-93    36      0       5       5      2012     2012 2012     COL ELISA</span></span>
-<span><span class="co">#&gt;           antibody</span></span>
-<span><span class="co">#&gt; 1 IgG anti-T.cruzi</span></span>
-<span><span class="co">#&gt; 2 IgG anti-T.cruzi</span></span>
-<span><span class="co">#&gt; 3 IgG anti-T.cruzi</span></span>
-<span><span class="co">#&gt; 4 IgG anti-T.cruzi</span></span>
-<span><span class="co">#&gt; 5 IgG anti-T.cruzi</span></span></code></pre></div>
-<p>After preparing the data we can run two models (constant and time
-varying) available on serofoi.</p>
+<p><strong><em>serofoi</em></strong> was used to compare three potential
+scenarios of <em>VEEV</em> transmission: <em>constant endemic</em>,
+<em>epidemic slow</em>, and <em>epidemic fast</em>. The results showed a
+significant increase in the estimated <em>Force-of-Infection (FoI)</em>
+in the region, indicating a rise in <em>VEEV</em> transmission. The
+study found that there was much higher statistical support for a
+time-varying rather than a constant scenario based on higher elpd and
+lower se values of the two time-varying models compared to the constant
+one (Figure 2). The results also suggest slightly (yet relevant) better
+support for model 3 (<code>tv-nomal-log</code>), compared to model 2
+(<code>tv-normal</code>), suggesting a recent increase in transmission
+in the study area.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">chagas2012p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_serodata.html">prepare_serodata</a></span><span class="op">(</span><span class="va">chagas2012</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">m1_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chagas2012p</span>,</span>
-<span>                        foi_model <span class="op">=</span> <span class="st">"constant"</span>,</span>
-<span>                        n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
-<span>                        n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "serofoi model constant finished running ------"</span></span>
-<span><span class="co">#&gt;           [,1]              </span></span>
-<span><span class="co">#&gt; foi_model "constant"        </span></span>
-<span><span class="co">#&gt; dataset   "COL-035-93"      </span></span>
-<span><span class="co">#&gt; country   "COL"             </span></span>
-<span><span class="co">#&gt; year      "2012"            </span></span>
-<span><span class="co">#&gt; test      "ELISA"           </span></span>
-<span><span class="co">#&gt; antibody  "IgG anti-T.cruzi"</span></span>
-<span><span class="co">#&gt; n_sample  "747"             </span></span>
-<span><span class="co">#&gt; n_agec    "72"              </span></span>
-<span><span class="co">#&gt; n_iter    "500"             </span></span>
-<span><span class="co">#&gt; elpd      "-92.66"          </span></span>
-<span><span class="co">#&gt; se        "6.54"            </span></span>
-<span><span class="co">#&gt; converged "Yes"</span></span>
-<span></span>
-<span><span class="va">m2_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chagas2012p</span>,</span>
-<span>                        foi_model <span class="op">=</span> <span class="st">"tv_normal"</span>,</span>
-<span>                        n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
-<span>                        n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "serofoi model tv_normal finished running ------"</span></span>
-<span><span class="co">#&gt;           [,1]              </span></span>
-<span><span class="co">#&gt; foi_model "tv_normal"       </span></span>
-<span><span class="co">#&gt; dataset   "COL-035-93"      </span></span>
-<span><span class="co">#&gt; country   "COL"             </span></span>
-<span><span class="co">#&gt; year      "2012"            </span></span>
-<span><span class="co">#&gt; test      "ELISA"           </span></span>
-<span><span class="co">#&gt; antibody  "IgG anti-T.cruzi"</span></span>
-<span><span class="co">#&gt; n_sample  "747"             </span></span>
-<span><span class="co">#&gt; n_agec    "72"              </span></span>
-<span><span class="co">#&gt; n_iter    "1500"            </span></span>
-<span><span class="co">#&gt; elpd      "-74.7"           </span></span>
-<span><span class="co">#&gt; se        "5.83"            </span></span>
-<span><span class="co">#&gt; converged "Yes"</span></span></code></pre></div>
-<p>Now, we can plot the results of the two models to compare (Figure 1).
-As shown in <span class="citation">Cucunubá et al. (<a href="#ref-Cucunub%C3%A12017" role="doc-biblioref">2017</a>)</span>,
-interventions for Chagas control have been ongoing from the 1980s in
-Colombia having heterogeneous impact depending on the type of
-population. For this serosurvey, which is from tradittional indigenous
-rural area, the serofoi models are able to detect a modest still
-relevant slow decreasing trend consistent (model 2) as slightly better
-supported than the constant model. Notice that model 3 does not converge
-despite a high number of iterations.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p1_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m1_cha</span>, size_text <span class="op">=</span> <span class="fl">12</span>, max_lambda <span class="op">=</span> <span class="fl">0.02</span><span class="op">)</span></span>
-<span><span class="va">p2_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m2_cha</span>, size_text <span class="op">=</span> <span class="fl">12</span>, max_lambda <span class="op">=</span> <span class="fl">0.02</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">plot_grid</a></span><span class="op">(</span><span class="va">p1_cha</span>, <span class="va">p2_cha</span>, nrow <span class="op">=</span> <span class="fl">1</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="use_cases_files/figure-html/model_comp_cha-1.png" width="768"></p>
-</div>
-<div class="section level3">
-<h3 id="case-study-2--hidden-alphaviruses-epidemics-in-panama">Case study 2. Hidden Alphaviruses epidemics in Panama<a class="anchor" aria-label="anchor" href="#case-study-2--hidden-alphaviruses-epidemics-in-panama"></a>
-</h3>
-<p>As shown in <span class="citation">(<a href="#ref-Carrera2020" role="doc-biblioref">Carrera et al. 2020</a>)</span>, hidden epidemic
-and endemic transmission of alphaviruses in Eastern Panama have been
-around for decades. From this paper we use a dataset measuring IgG
-antibodies againts Venezuelan Equine Encephalitis Virus (VEEV) in a
-rural village in Panamá in 2017. This dataset, <code>veev2017</code> is
-included in serofoi.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"veev2012"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">veev2012</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="co">#&gt;          survey total counts age_min age_max year_init year_end tsur country</span></span>
-<span><span class="co">#&gt; 1 PAN-2012-VEEV     6      3       1       5      2012     2012 2012     PAN</span></span>
-<span><span class="co">#&gt; 2 PAN-2012-VEEV    14     11       5      10      2012     2012 2012     PAN</span></span>
-<span><span class="co">#&gt; 3 PAN-2012-VEEV    14     11      10      15      2012     2012 2012     PAN</span></span>
-<span><span class="co">#&gt; 4 PAN-2012-VEEV     8      5      15      20      2012     2012 2012     PAN</span></span>
-<span><span class="co">#&gt; 5 PAN-2012-VEEV     8      7      20      25      2012     2012 2012     PAN</span></span>
-<span><span class="co">#&gt;    test      antibody</span></span>
-<span><span class="co">#&gt; 1 ELISA IgG anti-VEEV</span></span>
-<span><span class="co">#&gt; 2 ELISA IgG anti-VEEV</span></span>
-<span><span class="co">#&gt; 3 ELISA IgG anti-VEEV</span></span>
-<span><span class="co">#&gt; 4 ELISA IgG anti-VEEV</span></span>
-<span><span class="co">#&gt; 5 ELISA IgG anti-VEEV</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<code class="sourceCode R"><span><span class="co"># Load and prepare data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"veev2012"</span><span class="op">)</span></span>
 <span><span class="va">veev2012p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_serodata.html">prepare_serodata</a></span><span class="op">(</span><span class="va">veev2012</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># Implementation of the models</span></span>
 <span><span class="va">m1_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">veev2012p</span>,</span>
 <span>                        foi_model <span class="op">=</span> <span class="st">"constant"</span>,</span>
-<span>                        n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
+<span>                        n_iters <span class="op">=</span> <span class="fl">500</span>,</span>
 <span>                        n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "serofoi model constant finished running ------"</span></span>
-<span><span class="co">#&gt;           [,1]           </span></span>
-<span><span class="co">#&gt; foi_model "constant"     </span></span>
-<span><span class="co">#&gt; dataset   "PAN-2012-VEEV"</span></span>
-<span><span class="co">#&gt; country   "PAN"          </span></span>
-<span><span class="co">#&gt; year      "2012"         </span></span>
-<span><span class="co">#&gt; test      "ELISA"        </span></span>
-<span><span class="co">#&gt; antibody  "IgG anti-VEEV"</span></span>
-<span><span class="co">#&gt; n_sample  "146"          </span></span>
-<span><span class="co">#&gt; n_agec    "17"           </span></span>
-<span><span class="co">#&gt; n_iter    "500"          </span></span>
-<span><span class="co">#&gt; elpd      "-43.81"       </span></span>
-<span><span class="co">#&gt; se        "13.9"         </span></span>
-<span><span class="co">#&gt; converged "Yes"</span></span>
 <span></span>
 <span><span class="va">m2_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">veev2012p</span>,</span>
 <span>                        foi_model <span class="op">=</span> <span class="st">"tv_normal"</span>,</span>
-<span>                        n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
+<span>                        n_iters <span class="op">=</span> <span class="fl">500</span>,</span>
 <span>                        n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "serofoi model tv_normal finished running ------"</span></span>
-<span><span class="co">#&gt;           [,1]           </span></span>
-<span><span class="co">#&gt; foi_model "tv_normal"    </span></span>
-<span><span class="co">#&gt; dataset   "PAN-2012-VEEV"</span></span>
-<span><span class="co">#&gt; country   "PAN"          </span></span>
-<span><span class="co">#&gt; year      "2012"         </span></span>
-<span><span class="co">#&gt; test      "ELISA"        </span></span>
-<span><span class="co">#&gt; antibody  "IgG anti-VEEV"</span></span>
-<span><span class="co">#&gt; n_sample  "146"          </span></span>
-<span><span class="co">#&gt; n_agec    "17"           </span></span>
-<span><span class="co">#&gt; n_iter    "500"          </span></span>
-<span><span class="co">#&gt; elpd      "-28.74"       </span></span>
-<span><span class="co">#&gt; se        "7.04"         </span></span>
-<span><span class="co">#&gt; converged "Yes"</span></span>
 <span></span>
 <span><span class="va">m3_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">veev2012p</span>,</span>
 <span>                        foi_model <span class="op">=</span> <span class="st">"tv_normal_log"</span>,</span>
-<span>                        n_iters <span class="op">=</span> <span class="fl">500</span>, </span>
+<span>                        n_iters <span class="op">=</span> <span class="fl">500</span>,</span>
 <span>                        n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "serofoi model tv_normal_log finished running ------"</span></span>
-<span><span class="co">#&gt;           [,1]           </span></span>
-<span><span class="co">#&gt; foi_model "tv_normal_log"</span></span>
-<span><span class="co">#&gt; dataset   "PAN-2012-VEEV"</span></span>
-<span><span class="co">#&gt; country   "PAN"          </span></span>
-<span><span class="co">#&gt; year      "2012"         </span></span>
-<span><span class="co">#&gt; test      "ELISA"        </span></span>
-<span><span class="co">#&gt; antibody  "IgG anti-VEEV"</span></span>
-<span><span class="co">#&gt; n_sample  "146"          </span></span>
-<span><span class="co">#&gt; n_agec    "17"           </span></span>
-<span><span class="co">#&gt; n_iter    "500"          </span></span>
-<span><span class="co">#&gt; elpd      "-22"          </span></span>
-<span><span class="co">#&gt; se        "2.99"         </span></span>
-<span><span class="co">#&gt; converged "Yes"</span></span></code></pre></div>
-<p>Now, we can plot the results of the three models to compare. On
-Figure 3, we can observe a large increase in the estimated FOI. As
-suggested in <span class="citation">Carrera et al. (<a href="#ref-Carrera2020" role="doc-biblioref">2020</a>)</span>, an
-important increase in the transmission of VEEV in this region is
-inferred. Although the three fitted models converge well, we see much
-larger support for a more sudden increase in recent years with highest
-FoI values at 0.25 (consistent with an epidemic).</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p1_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m1_veev</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span>
-<span><span class="va">p2_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m2_veev</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span>
-<span><span class="va">p3_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m3_veev</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">plot_grid</a></span><span class="op">(</span><span class="va">p1_veev</span>, <span class="va">p2_veev</span>, <span class="va">p3_veev</span>, nrow <span class="op">=</span> <span class="fl">1</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<p><img src="use_cases_files/figure-html/model_comp_veev-1.png" width="960"></p>
-<p>Figure 3. Results of fitted models, Force-of-Infection estimates and
-convergence.</p>
+<span><span class="co"># Visualisation of the results</span></span>
+<span><span class="va">p1_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m1_veev</span>, size_text <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="va">p2_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m2_veev</span>, size_text <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="va">p3_veev</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m3_veev</span>, size_text <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">plot_grid</a></span><span class="op">(</span><span class="va">p1_veev</span>, <span class="va">p2_veev</span>, <span class="va">p3_veev</span>, ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<p><img src="use_cases_files/figure-html/veev_hidden-1.png" width="480" style="display: block; margin: auto;">
+Figure 2. <strong><em>serofoi</em></strong> models for <em>FoI</em>
+estimates of <em>Venezuelan Equine Encephalitis Virus (VEEV)</em>
+transmission in a rural remote area of Panama.</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="case-study-3--chagas-disease-endemic-disease">Case study 3. Chagas disease (endemic disease)<a class="anchor" aria-label="anchor" href="#case-study-3--chagas-disease-endemic-disease"></a>
+</h2>
+<div class="section level3 unnumbered alert alert-secondary">
+<h3 class="unnumbered" id="the-challenge-2">The challenge:<a class="anchor" aria-label="anchor" href="#the-challenge-2"></a>
+</h3>
+<p>Chagas disease is a parasitic infection caused by the protozoan
+<em>Trypanosoma cruzi</em>. It is only endemic to Latin America, where
+it is transmitted to humans through the bite of infected triatomine
+bugs, which have been present in the Americas for thousands of years.
+Triatomine bugs have established domiciliary habits, living inside
+houses and biting humans. Insecticide spraying is the primary control
+strategy for Chagas disease, as it effectively reduces the population of
+triatomine bugs, the main vector of the disease, in domestic
+environments. According to <span class="citation">(<a href="#ref-cucunub%C3%A12017" role="doc-biblioref"><strong>cucunubá2017?</strong></a>)</span>,
+interventions for Chagas disease control have been ongoing in Colombia
+since the 1980s, with a heterogeneous impact depending on the type of
+setting, environment, and population. There is a <strong>methodological
+challenge</strong> in how best to estimate the historical effectiveness
+of these control strategies across endemic areas. Here
+<strong><em>serofoi</em></strong> can assist with these estimations.</p>
 </div>
 <div class="section level3">
-<h3 id="case-study-3--a-known-large-chikungunya-epidemic-in-brazil">Case study 3. A known Large Chikungunya epidemic in Brazil<a class="anchor" aria-label="anchor" href="#case-study-3--a-known-large-chikungunya-epidemic-in-brazil"></a>
+<h3 id="the-dataset-2">The dataset<a class="anchor" aria-label="anchor" href="#the-dataset-2"></a>
 </h3>
-<p>Chikungunya outbreaks ocurred rapidly after the introduction of the
-virus to Brazil in 2013-2014. We use the dataset from <span class="citation">(<a href="#ref-dias2018" role="doc-biblioref">Dias et
-al. 2018</a>)</span> that conducts a population-based study through
-household interviews and serologic surveys (measuring IgG antibodies
-against Chikungunya virus) in Bahia, Brazil during October-December
-2015, right after a large CHIKV epidemic that occurred in that area.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"chik2015"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">chik2015</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="co">#&gt;           survey total counts age_min age_max year_init year_end tsur country</span></span>
-<span><span class="co">#&gt; 1 BRA 2015(S019)   144     63      40      59      2015     2015 2015     BRA</span></span>
-<span><span class="co">#&gt; 2 BRA 2015(S019)   148     69      60      79      2015     2015 2015     BRA</span></span>
-<span><span class="co">#&gt; 3 BRA 2015(S019)    45     17       1      19      2015     2015 2015     BRA</span></span>
-<span><span class="co">#&gt; 4 BRA 2015(S019)   109     55      20      39      2015     2015 2015     BRA</span></span>
-<span><span class="co">#&gt;    test       antibody        reference</span></span>
-<span><span class="co">#&gt; 1 ELISA IgG anti-CHIKV Dias et al. 2018</span></span>
-<span><span class="co">#&gt; 2 ELISA IgG anti-CHIKV Dias et al. 2018</span></span>
-<span><span class="co">#&gt; 3 ELISA IgG anti-CHIKV Dias et al. 2018</span></span>
-<span><span class="co">#&gt; 4 ELISA IgG anti-CHIKV Dias et al. 2018</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">chik2015p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_serodata.html">prepare_serodata</a></span><span class="op">(</span><span class="va">chik2015</span><span class="op">)</span></span>
+<p>Based on the data and analysis shown in <span class="citation">(<a href="#ref-cucunub%C3%A12017" role="doc-biblioref"><strong>cucunubá2017?</strong></a>)</span>, we use
+one of the datasets that measure the seroprevalence of IgG antibodies
+against <em>Trypanosoma cruzi</em> infection in rural areas of Colombia.
+The dataset is part of the <strong><em>serofoi</em></strong> package as
+<code>chagas2012</code>. This dataset corresponds to a serosurvey
+conducted in 2012 for a rural indigenous community known to have
+long-term endemic transmission, where some control interventions have
+taken place over the years. ### The result</p>
+<p>Because Chagas is an endemic disease, we should use only the
+<strong><em>serofoi</em></strong> endemic models (1.
+<code>constant</code>, 2. <code>tv-normal</code>) on the
+<code>chagas2012</code> dataset and compare which model is better
+supported. The results are shown in Figure 3. We found that for this
+serosurvey, both <strong><em>serofoi</em></strong> models converged
+(based on R-hat values not crossing 1.1), but the comparison of the two
+models shows a relevant slow decreasing trend, which was consistent with
+model 2 - <code>tv-normal</code>. This model was statistically better
+supported based on the highest <code>elpd</code> and lowest
+<code>se</code> values compared to the constant model. These results
+suggest a slow, still relevant decrease in the <em>FoI</em> values over
+the last decades which may have been a consequence of some of the
+interventions or local environmental changes that have occurred in the
+study area over the years, up to the point (2012) when the serosurvey
+was conducted.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Load and prepare data</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"chagas2012"</span><span class="op">)</span></span>
+<span><span class="va">chagas2012p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_serodata.html">prepare_serodata</a></span><span class="op">(</span><span class="va">chagas2012</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">mod1_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chik2015p</span>,</span>
-<span>                          foi_model <span class="op">=</span> <span class="st">"constant"</span>,</span>
-<span>                          n_iters <span class="op">=</span> <span class="fl">1000</span>, </span>
-<span>                          n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "serofoi model constant finished running ------"</span></span>
-<span><span class="co">#&gt;           [,1]            </span></span>
-<span><span class="co">#&gt; foi_model "constant"      </span></span>
-<span><span class="co">#&gt; dataset   "BRA 2015(S019)"</span></span>
-<span><span class="co">#&gt; country   "BRA"           </span></span>
-<span><span class="co">#&gt; year      "2015"          </span></span>
-<span><span class="co">#&gt; test      "ELISA"         </span></span>
-<span><span class="co">#&gt; antibody  "IgG anti-CHIKV"</span></span>
-<span><span class="co">#&gt; n_sample  "446"           </span></span>
-<span><span class="co">#&gt; n_agec    "4"             </span></span>
-<span><span class="co">#&gt; n_iter    "1000"          </span></span>
-<span><span class="co">#&gt; elpd      "-39.57"        </span></span>
-<span><span class="co">#&gt; se        "8.48"          </span></span>
-<span><span class="co">#&gt; converged "Yes"</span></span>
+<span><span class="co"># Implementation of the models</span></span>
+<span><span class="va">m1_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chagas2012p</span>,</span>
+<span>                        foi_model <span class="op">=</span> <span class="st">"constant"</span>,</span>
+<span>                        n_iters <span class="op">=</span> <span class="fl">800</span><span class="op">)</span></span>
+<span><span class="va">m2_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chagas2012p</span>,</span>
+<span>                        foi_model <span class="op">=</span> <span class="st">"tv_normal"</span>,</span>
+<span>                        n_iters <span class="op">=</span> <span class="fl">800</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">mod2_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chik2015p</span>,</span>
-<span>                          foi_model <span class="op">=</span> <span class="st">"tv_normal"</span>,</span>
-<span>                          n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
-<span>                          n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "serofoi model tv_normal finished running ------"</span></span>
-<span><span class="co">#&gt;           [,1]            </span></span>
-<span><span class="co">#&gt; foi_model "tv_normal"     </span></span>
-<span><span class="co">#&gt; dataset   "BRA 2015(S019)"</span></span>
-<span><span class="co">#&gt; country   "BRA"           </span></span>
-<span><span class="co">#&gt; year      "2015"          </span></span>
-<span><span class="co">#&gt; test      "ELISA"         </span></span>
-<span><span class="co">#&gt; antibody  "IgG anti-CHIKV"</span></span>
-<span><span class="co">#&gt; n_sample  "446"           </span></span>
-<span><span class="co">#&gt; n_agec    "4"             </span></span>
-<span><span class="co">#&gt; n_iter    "1500"          </span></span>
-<span><span class="co">#&gt; elpd      "-20.76"        </span></span>
-<span><span class="co">#&gt; se        "1.98"          </span></span>
-<span><span class="co">#&gt; converged "Yes"</span></span>
-<span></span>
-<span><span class="va">mod3_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">chik2015p</span>,</span>
-<span>                          foi_model <span class="op">=</span> <span class="st">"tv_normal_log"</span>,</span>
-<span>                          n_iters <span class="op">=</span> <span class="fl">1500</span>, </span>
-<span>                          n_thin <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "serofoi model tv_normal_log finished running ------"</span></span>
-<span><span class="co">#&gt;           [,1]            </span></span>
-<span><span class="co">#&gt; foi_model "tv_normal_log" </span></span>
-<span><span class="co">#&gt; dataset   "BRA 2015(S019)"</span></span>
-<span><span class="co">#&gt; country   "BRA"           </span></span>
-<span><span class="co">#&gt; year      "2015"          </span></span>
-<span><span class="co">#&gt; test      "ELISA"         </span></span>
-<span><span class="co">#&gt; antibody  "IgG anti-CHIKV"</span></span>
-<span><span class="co">#&gt; n_sample  "446"           </span></span>
-<span><span class="co">#&gt; n_agec    "4"             </span></span>
-<span><span class="co">#&gt; n_iter    "1500"          </span></span>
-<span><span class="co">#&gt; elpd      "-12.58"        </span></span>
-<span><span class="co">#&gt; se        "0.81"          </span></span>
-<span><span class="co">#&gt; converged "Yes"</span></span></code></pre></div>
-<p>In Figure 4, we can observe the comparison between the three serofoi
-models. Here serofoi shows strong statistical support for a sudden
-increase in the transmission of CHIKV close to the year of the
-serosurvey (2015). The exact year is not possible to estimate, mainly
-given the data used is largely aggregated by 20-years age groups.
-Despite that, the results are consistent with the empirical evidence
-shown by <span class="citation">(<a href="#ref-dias2018" role="doc-biblioref">Dias et al. 2018</a>)</span> with both interviews,
-and IgM testing.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p1_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">mod1_chik</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.08</span><span class="op">)</span></span>
-<span><span class="va">p2_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">mod2_chik</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.08</span><span class="op">)</span></span>
-<span><span class="va">p3_chik</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">mod3_chik</span>, size_text <span class="op">=</span> <span class="fl">10</span>, max_lambda <span class="op">=</span> <span class="fl">0.08</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">plot_grid</a></span><span class="op">(</span><span class="va">p1_chik</span>, <span class="va">p2_chik</span>, <span class="va">p3_chik</span>, nrow <span class="op">=</span> <span class="fl">1</span>, ncol <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<p><img src="use_cases_files/figure-html/plot_chik-1.png" width="960"></p>
-</div>
-<div class="section level3">
-<h3 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
-</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-Carrera2020" class="csl-entry">
-Carrera, Jean-Paul, Zulma M. Cucunubá, Karen Neira, Ben Lambert, Yaneth
-Pittí, Jesus Liscano, Jorge L. Garzón, et al. 2020. <span>“Endemic and
-Epidemic Human Alphavirus Infections in Eastern Panama: An Analysis of
-Population-Based Cross-Sectional Surveys.”</span> <em>The American
-Journal of Tropical Medicine and Hygiene</em> 103 (6): 2429–37. <a href="https://doi.org/10.4269/ajtmh.20-0408" class="external-link">https://doi.org/10.4269/ajtmh.20-0408</a>.
-</div>
-<div id="ref-Cucunubá2017" class="csl-entry">
-Cucunubá, Zulma M, Pierre Nouvellet, Lesong Conteh, Mauricio Javier
-Vera, Victor Manuel Angulo, Juan Carlos Dib, Gabriel Jaime Parra -Henao,
-and María Gloria Basáñez. 2017. <span>“Modelling Historical Changes in
-the Force-of-Infection of Chagas Disease to Inform Control and
-Elimination Programmes: Application in Colombia.”</span> <em>BMJ Global
-Health</em> 2 (3): e000345. <a href="https://doi.org/10.1136/bmjgh-2017-000345" class="external-link">https://doi.org/10.1136/bmjgh-2017-000345</a>.
-</div>
-<div id="ref-dias2018" class="csl-entry">
-Dias, Juarez P., Maria da Conceição N. Costa, Gubio Soares Campos, Enny
-S. Paixão, Marcio S. Natividade, Florisneide R. Barreto, Martha Suely C.
-Itaparica, et al. 2018. <span>“Seroprevalence of Chikungunya Virus After
-Its Emergence in Brazil.”</span> <em>Emerging Infectious Diseases</em>
-24 (4): 617–24. <a href="https://doi.org/10.3201/eid2404.171370" class="external-link">https://doi.org/10.3201/eid2404.171370</a>.
-</div>
-</div>
+<span><span class="co"># Visualisation of the results</span></span>
+<span><span class="va">p1_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m1_cha</span>, size_text <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="va">p2_cha</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">m2_cha</span>, size_text <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="fu">cowplot</span><span class="fu">::</span><span class="fu"><a href="https://wilkelab.org/cowplot/reference/plot_grid.html" class="external-link">plot_grid</a></span><span class="op">(</span><span class="va">p1_cha</span>, <span class="va">p2_cha</span>, ncol<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<p><img src="use_cases_files/figure-html/chagas_endemic-1.png" width="480" style="display: block; margin: auto;">
+Figure 3. <strong><em>serofoi</em></strong> endemic models for
+<em>FoI</em> estimates of <em>Trypanosoma cruzi</em> in a rural area of
+Colombia. ## References</p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

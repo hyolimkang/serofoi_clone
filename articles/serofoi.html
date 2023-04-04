@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">serofoi</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.9</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +44,7 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/simulated_data.html">Simulated data</a>
+    <a class="dropdown-item" href="../articles/foi_models.html">FoI Models</a>
     <a class="dropdown-item" href="../articles/use_cases.html">Use cases</a>
   </div>
 </li>
@@ -74,15 +74,122 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://trace-lac.github.io/serofoi/">serofoi</a></span><span class="op">)</span></span></code></pre></div>
-<div class="section level2">
-<h2 id="prepare-the-data-for-using-serofoi">Prepare the data for using serofoi<a class="anchor" aria-label="anchor" href="#prepare-the-data-for-using-serofoi"></a>
+<div class="section level2 unnumbered alert alert-primary">
+<h2 class="unnumbered" id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">data_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_serodata.html">prepare_serodata</a></span><span class="op">(</span><span class="va">serodata</span><span class="op">)</span></span></code></pre></div>
+<p>When informing the public health response we want to know how many
+individuals have been infected up to a certain point in time, which
+relates to the level of immunity for a given pathogen in a population.
+Based on this information, it is possible to estimate the speed at which
+susceptible individuals have been infected over time in that population.
+We call this parameter the <em>Force-of-Infection (FoI)</em>. To
+estimate this parameter serofoi uses a suit of catalytic models.</p>
 </div>
-  </main>
+<div class="section level2">
+<h2 id="for-which-diseases-is-this-package">For which diseases is this package?<a class="anchor" aria-label="anchor" href="#for-which-diseases-is-this-package"></a>
+</h2>
+<p><strong><em>serofoi</em></strong> is a package designed to be used
+for any infectious disease for which we could measure population
+immunity using IgG antibodies, such as: arboviruses (dengue, Zika,
+chikungunya), Chagas, alphaviruses, among many others. However, not for
+all diseases serofoi may be applicable with its current features. Please
+check the model assumptions below for each case.</p>
+</div>
+<div class="section level2">
+<h2 id="what-is-a-serosurvey">What is a serosurvey?<a class="anchor" aria-label="anchor" href="#what-is-a-serosurvey"></a>
+</h2>
+<p>A serosurvey is an epidemiological study that involves the collection
+and analysis of blood samples from a representative population to
+determine the prevalence of antibodies against a specific pathogen.
+These antibodies are typically produced by the immune system in response
+to an infection, and their presence in the blood can serve as an
+indicator of previous exposure to the pathogen. Serosurveys are valuable
+tools for public health researchers and policymakers, as they provide
+insights into the spread of infections within communities, the
+proportion of individuals with immunity, and the effectiveness of
+vaccination programs. Serosurveys can help guide targeted interventions,
+inform disease control strategies,and evaluate the success of public
+health measures.</p>
+</div>
+<div class="section level2">
+<h2 id="what-type-of-serosurvey-data-is-needed-to-use-the-package">What type of serosurvey data is needed to use the package?<a class="anchor" aria-label="anchor" href="#what-type-of-serosurvey-data-is-needed-to-use-the-package"></a>
+</h2>
+<p>This package is designed to be used for serosurveys that follow these
+inclusion criteria:</p>
+<ul>
+<li>Are population-based cross-sectional surveys (not
+hospital-based).</li>
+<li>Specify individuals’ age or age group.</li>
+<li>Indicate diagnostic test(s) used. The current version of serofoi
+only applies to IgG antibodies.</li>
+<li>Identify the location and date (year) of sample collection.</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="what-we-assume-about-the-biological-process">What we assume about the biological process<a class="anchor" aria-label="anchor" href="#what-we-assume-about-the-biological-process"></a>
+</h2>
+<p>Current version of <strong><em>serofoi</em></strong> includes the
+following assumptions on the underlying biological process:</p>
+<ul>
+<li>There is no sero-reversion (from positive to negative). It means IgG
+antibodies are life-long with no waning immunity. This may not be the
+case for several pathogens. The inclusion of sero-reversion in the
+modelling process is planned for future versions of
+<strong><em>serofoi</em></strong>.</li>
+<li>There is no age-dependency. This may not be the case for several
+pathogens. This feature is planned for future versions of
+<strong><em>serofoi</em></strong>.</li>
+<li>There is no impact from migration processes in the sampled
+population, which means the model is not suited for a situation with
+high levels of migration.</li>
+<li>There are no differences in the mortality rate of infected versus
+susceptible individuals. This may be a limitation for situations with a
+high infection fatality rate, such as Ebola.</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="the-bayesian-statistical-framework">The bayesian statistical framework<a class="anchor" aria-label="anchor" href="#the-bayesian-statistical-framework"></a>
+</h2>
+<p>To assess how well the mathematical representation of the different
+<em>FoI</em> models describes the seroprevalence data, we implement a
+fitting process that relies on a Bayesian framework. The priors and
+upper priors for each model indicate the assumed trajectory of the
+<em>FoI</em> (either constant or time-varying). serofoi provides a set
+of Bayesian comparison methods for the user to choose between various
+possible FoI models (trajectories) that best fit the seroprevalence
+data. For details see <a href="https://trace-lac.github.io/serofoi/articles/foi_models.html" class="external-link">FoI
+Models</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="modelling-the-force-of-infection-foi">Modelling the Force-of-infection (FoI)<a class="anchor" aria-label="anchor" href="#modelling-the-force-of-infection-foi"></a>
+</h2>
+<p>Is common to assume that the <em>FoI</em> is constant in time.
+However this is not always the case; <strong><em>serofoi</em></strong>
+addresses this by enabling the possibility to implement different
+time-varying models for the <em>FoI</em> and offering tools to compare
+them to the constant case in order to decide what model fits a
+serological survey the best.</p>
+<p>The integrated dataset <code>serodata_test</code> provides a minimal
+example of the input of the package. The following code can be used to
+prepare this dataset for model implementation and implements the basic
+constant model:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://trace-lac.github.io/serofoi/" class="external-link">serofoi</a></span><span class="op">)</span></span>
+<span><span class="co"># Loading and preparing data for modelling</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"serodata"</span><span class="op">)</span></span>
+<span><span class="va">serodata_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/prepare_serodata.html">prepare_serodata</a></span><span class="op">(</span><span class="va">serodata</span><span class="op">)</span></span>
+<span><span class="co"># Model implementation</span></span>
+<span><span class="va">model_constant</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/run_seromodel.html">run_seromodel</a></span><span class="op">(</span>serodata <span class="op">=</span> <span class="va">serodata_test</span>,</span>
+<span>                                foi_model <span class="op">=</span> <span class="st">"constant"</span><span class="op">)</span></span>
+<span><span class="co"># Visualisation</span></span>
+<span><span class="fu"><a href="../reference/plot_seromodel.html">plot_seromodel</a></span><span class="op">(</span><span class="va">model_constant</span>, size_text <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></code></pre></div>
+<p><img src="serofoi_files/figure-html/model_constant-1.png" width="50%" style="display: block; margin: auto;">
+For details on the implementation of time-varying models and model
+comparison see <a href="https://trace-lac.github.io/serofoi/articles/foi_models.html" class="external-link">FoI
+Models</a>.</p>
+</div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 

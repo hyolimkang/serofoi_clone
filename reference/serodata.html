@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">serofoi</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.9</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,7 +27,7 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/simulated_data.html">Simulated data</a>
+    <a class="dropdown-item" href="../articles/foi_models.html">FoI Models</a>
     <a class="dropdown-item" href="../articles/use_cases.html">Use cases</a>
   </div>
 </li>
@@ -63,152 +63,79 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">serodata</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        survey total counts age_min age_max year_init year_end tsur country</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  COL-035-93    34      0       1       1      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  COL-035-93    25      0       2       2      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  COL-035-93    35      1       3       3      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  COL-035-93    29      0       4       4      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  COL-035-93    36      0       5       5      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  COL-035-93    23      0       6       6      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  COL-035-93    34      0       7       7      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  COL-035-93    18      0       8       8      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  COL-035-93    21      0       9       9      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 COL-035-93    24      0      10      10      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 COL-035-93    13      1      11      11      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 COL-035-93    28      0      12      12      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 COL-035-93    15      0      13      13      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 COL-035-93    25      0      14      14      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 COL-035-93    13      0      15      15      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16 COL-035-93    16      0      16      16      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 COL-035-93    12      0      17      17      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 COL-035-93    18      0      18      18      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19 COL-035-93     9      0      19      19      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20 COL-035-93     8      0      20      20      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 COL-035-93     4      0      21      21      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22 COL-035-93    19      0      22      22      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23 COL-035-93    15      0      23      23      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 COL-035-93    14      0      24      24      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 COL-035-93    20      0      25      25      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 COL-035-93    11      1      26      26      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 COL-035-93     8      1      27      27      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28 COL-035-93     9      0      28      28      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29 COL-035-93     9      0      29      29      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 COL-035-93    10      1      30      30      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 COL-035-93    10      1      31      31      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32 COL-035-93    11      0      32      32      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 COL-035-93    11      1      33      33      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 COL-035-93     8      0      34      34      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35 COL-035-93    10      1      35      35      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 COL-035-93    10      3      36      36      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37 COL-035-93     9      1      37      37      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38 COL-035-93     4      1      38      38      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39 COL-035-93     4      0      39      39      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40 COL-035-93     9      2      40      40      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41 COL-035-93     4      2      41      41      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42 COL-035-93     8      0      42      42      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43 COL-035-93     3      1      43      43      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44 COL-035-93     1      1      44      44      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45 COL-035-93     3      0      45      45      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 46 COL-035-93     3      2      46      46      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47 COL-035-93     2      2      48      48      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48 COL-035-93     3      2      49      49      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49 COL-035-93     3      0      50      50      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50 COL-035-93     1      1      51      51      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 51 COL-035-93     6      3      52      52      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52 COL-035-93     4      0      53      53      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 53 COL-035-93     3      1      54      54      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 54 COL-035-93     6      3      55      55      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55 COL-035-93     1      0      56      56      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56 COL-035-93     4      3      57      57      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 57 COL-035-93     3      2      58      58      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 58 COL-035-93     1      0      59      59      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59 COL-035-93    11      1      60      60      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60 COL-035-93     5      0      61      61      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 61 COL-035-93     1      1      62      62      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 62 COL-035-93     2      1      63      63      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 63 COL-035-93     5      3      64      64      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 64 COL-035-93     8      2      65      65      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 65 COL-035-93     1      1      66      66      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 66 COL-035-93     1      1      67      67      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 67 COL-035-93     2      0      68      68      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 68 COL-035-93     5      2      69      69      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 69 COL-035-93     3      2      70      70      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 70 COL-035-93     1      1      71      71      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 71 COL-035-93     1      1      72      72      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 72 COL-035-93     1      1      77      77      2012     2012 2012     COL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     test         antibody</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 46 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 51 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 53 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 54 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 57 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 58 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 61 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 62 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 63 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 64 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 65 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 66 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 67 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 68 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 69 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 70 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 71 ELISA IgG anti-T.cruzi</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 72 ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        survey total counts age_min age_max tsur country  test         antibody</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  COL-035-93    34      0       1       1 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  COL-035-93    25      0       2       2 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  COL-035-93    35      1       3       3 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  COL-035-93    29      0       4       4 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  COL-035-93    36      0       5       5 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  COL-035-93    23      0       6       6 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  COL-035-93    34      0       7       7 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  COL-035-93    18      0       8       8 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  COL-035-93    21      0       9       9 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 COL-035-93    24      0      10      10 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 COL-035-93    13      1      11      11 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 COL-035-93    28      0      12      12 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 COL-035-93    15      0      13      13 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14 COL-035-93    25      0      14      14 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 COL-035-93    13      0      15      15 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16 COL-035-93    16      0      16      16 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17 COL-035-93    12      0      17      17 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 COL-035-93    18      0      18      18 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19 COL-035-93     9      0      19      19 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20 COL-035-93     8      0      20      20 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21 COL-035-93     4      0      21      21 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22 COL-035-93    19      0      22      22 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23 COL-035-93    15      0      23      23 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 COL-035-93    14      0      24      24 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 COL-035-93    20      0      25      25 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26 COL-035-93    11      1      26      26 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27 COL-035-93     8      1      27      27 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28 COL-035-93     9      0      28      28 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29 COL-035-93     9      0      29      29 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30 COL-035-93    10      1      30      30 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31 COL-035-93    10      1      31      31 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32 COL-035-93    11      0      32      32 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 COL-035-93    11      1      33      33 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34 COL-035-93     8      0      34      34 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35 COL-035-93    10      1      35      35 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36 COL-035-93    10      3      36      36 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37 COL-035-93     9      1      37      37 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38 COL-035-93     4      1      38      38 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39 COL-035-93     4      0      39      39 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40 COL-035-93     9      2      40      40 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41 COL-035-93     4      2      41      41 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42 COL-035-93     8      0      42      42 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 COL-035-93     3      1      43      43 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44 COL-035-93     1      1      44      44 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 COL-035-93     3      0      45      45 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46 COL-035-93     3      2      46      46 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47 COL-035-93     2      2      48      48 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48 COL-035-93     3      2      49      49 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49 COL-035-93     3      0      50      50 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50 COL-035-93     1      1      51      51 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51 COL-035-93     6      3      52      52 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52 COL-035-93     4      0      53      53 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53 COL-035-93     3      1      54      54 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54 COL-035-93     6      3      55      55 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55 COL-035-93     1      0      56      56 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56 COL-035-93     4      3      57      57 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57 COL-035-93     3      2      58      58 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58 COL-035-93     1      0      59      59 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59 COL-035-93    11      1      60      60 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60 COL-035-93     5      0      61      61 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61 COL-035-93     1      1      62      62 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62 COL-035-93     2      1      63      63 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63 COL-035-93     5      3      64      64 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64 COL-035-93     8      2      65      65 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65 COL-035-93     1      1      66      66 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66 COL-035-93     1      1      67      67 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 67 COL-035-93     2      0      68      68 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 68 COL-035-93     5      2      69      69 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69 COL-035-93     3      2      70      70 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70 COL-035-93     1      1      71      71 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71 COL-035-93     1      1      72      72 2012     COL ELISA IgG anti-T.cruzi</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72 COL-035-93     1      1      77      77 2012     COL ELISA IgG anti-T.cruzi</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

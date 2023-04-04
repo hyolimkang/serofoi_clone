@@ -14,7 +14,7 @@ the Force-of-Infection fit and the R-hat estimates plots."><!-- mathjax --><scri
     
     <a class="navbar-brand me-2" href="../index.html">serofoi</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.9</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,7 @@ the Force-of-Infection fit and the R-hat estimates plots."><!-- mathjax --><scri
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/simulated_data.html">Simulated data</a>
+    <a class="dropdown-item" href="../articles/foi_models.html">FoI Models</a>
     <a class="dropdown-item" href="../articles/use_cases.html">Use cases</a>
   </div>
 </li>
@@ -60,9 +60,9 @@ the Force-of-Infection fit and the R-hat estimates plots.</p>
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_seromodel</span><span class="op">(</span></span>
 <span>  <span class="va">seromodel_object</span>,</span>
-<span>  lambda_sim <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  max_lambda <span class="op">=</span> <span class="cn">NA</span>,</span>
-<span>  size_text <span class="op">=</span> <span class="fl">25</span></span>
+<span>  size_text <span class="op">=</span> <span class="fl">25</span>,</span>
+<span>  foi_sim <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
