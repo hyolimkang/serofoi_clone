@@ -39,7 +39,7 @@ You can install the **development version** of ***serofoi*** from
 
 ``` r
 if(!require("remotes")) install.packages("remotes")
-remotes::install_github("TRACE-LAC/serofoi")
+remotes::install_github("epiverse-trace/serofoi")
 ```
 
 ## Quick start
