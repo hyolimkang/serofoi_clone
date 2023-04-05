@@ -11,7 +11,7 @@ R package to estimate time-varying Force-of-Infection of a given pathogen from p
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://trace-lac.github.io/serofoi/}
+  \item \url{https://epiverse-trace.github.io/serofoi/}
 }
 
 }

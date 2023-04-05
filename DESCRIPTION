@@ -63,7 +63,7 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-URL: https://trace-lac.github.io/serofoi/
+URL: https://epiverse-trace.github.io/serofoi/
 Additional_repositories:
     https://mc-stan.org/r-packages/
 Config/testthat/edition: 3
